@@ -1,0 +1,51 @@
+import { motion } from "framer-motion";
+import { ArrowRight, Heart } from "lucide-react";
+import handsImage from "../../assets/images/cta-hands.svg";
+
+export default function CTA() {
+  return (
+    <section id="donate" className="relative overflow-hidden bg-navy-950 py-14 md:py-16">
+      <div className="content-container grid items-center gap-8 md:grid-cols-[auto_1fr_auto]">
+        <motion.img
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          src={handsImage}
+          alt="Hands joined together in unity"
+          className="h-20 w-20 shrink-0 rounded-full object-cover md:h-24 md:w-24"
+        />
+
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          <h2 className="font-display text-2xl font-bold text-cream-100 sm:text-3xl">
+            Be a Part of This Journey
+          </h2>
+          <p className="mt-2 max-w-md text-sm leading-relaxed text-cream-100/70">
+            Together, we can preserve heritage, transform lives and reconnect
+            generations. Your support makes it possible.
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="flex flex-wrap gap-4"
+        >
+          <a href="#donate" className="btn-gold">
+            Support Our Work <Heart className="h-4 w-4" />
+          </a>
+          <a href="#chapter" className="btn-outline">
+            Reconnect to Your Roots <ArrowRight className="h-4 w-4" />
+          </a>
+        </motion.div>
+      </div>
+    </section>
+  );
+}

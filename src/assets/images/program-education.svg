@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="450" viewBox="0 0 600 450">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#C9973E" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="#0F1E33"/>
+  <rect width="100%" height="100%" fill="url(#grid)"/>
+  <rect x="1" y="1" width="598" height="448" fill="none" stroke="#C9973E" stroke-opacity="0.25" stroke-width="2"/>
+  <text x="50%" y="217.5" font-family="Arial, sans-serif" font-size="37.5" font-weight="700" fill="#C9973E" text-anchor="middle" dominant-baseline="middle">EDUCATION & SKILL</text>
+  <text x="50%" y="258.75" font-family="Arial, sans-serif" font-size="20.625" fill="#C9973E" fill-opacity="0.7" text-anchor="middle" dominant-baseline="middle">600x450</text>
+</svg>
