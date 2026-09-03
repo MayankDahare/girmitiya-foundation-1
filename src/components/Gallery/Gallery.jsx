@@ -12,9 +12,9 @@ import g6 from "../../assets/documents/greeting-06.svg";
 const greetings = [g1, g2, g3, g4, g5, g6];
 
 export default function Gallery() {
-  const trackRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef(null);
 
-  const scrollByAmount = (dir: 1 | -1) => {
+  const scrollByAmount = (dir) => {
     trackRef.current?.scrollBy({ left: dir * 260, behavior: "smooth" });
   };
 

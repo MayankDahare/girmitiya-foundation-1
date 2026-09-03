@@ -10,7 +10,6 @@ import {
   Landmark,
   Compass,
 } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 
 export const navLinks = [
   { label: "Home", href: "#home" },
@@ -22,13 +21,7 @@ export const navLinks = [
   { label: "Contact Us", href: "#contact" },
 ];
 
-export interface HeroPillar {
-  icon: LucideIcon;
-  title: string;
-  subtitle: string;
-}
-
-export const heroPillars: HeroPillar[] = [
+export const heroPillars = [
   { icon: HeartHandshake, title: "Care", subtitle: "For Communities" },
   { icon: Users, title: "Connect", subtitle: "Generations & Roots" },
   { icon: Star, title: "Celebrate", subtitle: "Culture & Heritage" },
@@ -41,13 +34,6 @@ export const introPoints = [
   "We believe that our roots represent our Identity, Culture, Pride and serve as a foundation for Education and Heritage.",
 ];
 
-export interface ProgramItem {
-  icon: LucideIcon;
-  title: string;
-  description: string;
-  image: string;
-}
-
 export const impactStats = [
   { value: 6, suffix: "+", label: "Years of Dedicated Service" },
   { value: 150, suffix: "+", label: "Research / Reconnected" },
@@ -55,14 +41,7 @@ export const impactStats = [
   { value: 1000, suffix: "+", label: "People Successfully Reunited" },
 ];
 
-export interface GlobalMarker {
-  name: string;
-  flag: string;
-  top: string;
-  left: string;
-}
-
-export const globalMarkers: GlobalMarker[] = [
+export const globalMarkers = [
   { name: "Canada", flag: "🇨🇦", top: "18%", left: "20%" },
   { name: "Fiji", flag: "🌏", top: "62%", left: "88%" },
   { name: "Mauritius", flag: "🇲🇺", top: "58%", left: "78%" },
