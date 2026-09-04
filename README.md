@@ -7,7 +7,7 @@ programs, blog, gallery, and donation/contact APIs.
 
 ## Tech stack
 
-- React 19 + TypeScript
+- React 19 + JavaScript
 - Vite 8
 - Tailwind CSS v4 (CSS-first `@theme` tokens, no `tailwind.config.js` needed)
 - Framer Motion (subtle entrance/reveal animation, respects `prefers-reduced-motion`)
@@ -39,20 +39,20 @@ src/
     Intro/        "Welcome to Girmitiya Foundation" section + seal
     Programs/     "What We Do" 6-card grid
     ProgramCard/  Reusable card used by Programs
-    Impact/       Statistics band with count-up animation (Counter.tsx)
+    Impact/       Statistics band with count-up animation (Counter.jsx)
     GlobalFamily/ World map + diaspora country markers
     Gallery/      "Greetings Message" scrollable document gallery
     CTA/          "Be a Part of This Journey" band
     Footer/       4-column footer, contact info, social links, map
   data/
-    homepage.ts   All copy/content and nav/footer link arrays (data-driven)
+    homepage.js   All copy/content and nav/footer link arrays (data-driven)
   assets/
     images/       Section imagery (placeholders — see below)
     logos/        Foundation logo + seal (placeholders — see below)
     documents/    Greeting message scans (placeholders — see below)
   pages/Home/     Assembles all sections in the approved order
-  App.tsx
-  main.tsx
+  App.jsx
+  main.jsx
   index.css       Design tokens (@theme) + global styles
 ```
 
@@ -81,7 +81,7 @@ extension, or update the `import` path in the relevant component.
 
 None of the statistics, program descriptions, contact details, or navigation
 labels are placeholders — that copy was transcribed directly from the
-approved design and is wired through `src/data/homepage.ts`.
+approved design and is wired through `src/data/homepage.js`.
 
 ## Notes on fidelity choices
 
@@ -97,7 +97,7 @@ approved design and is wired through `src/data/homepage.ts`.
 
 ## Next steps toward the MERN stack
 
-- `src/data/homepage.ts` is the seam to swap for API calls (e.g. `GET /api/programs`,
+- `src/data/homepage.js` is the seam to swap for API calls (e.g. `GET /api/programs`,
   `GET /api/greetings`, `GET /api/stats`) once the Express/MongoDB backend exists.
 - The Donate/Contact CTAs are wired to in-page anchors (`#donate`, `#contact`) —
   point them at real routes/forms once those pages exist.

@@ -1,16 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 
-export interface ProgramCardProps {
-  icon: LucideIcon;
-  title: string;
-  description: string;
-  image: string;
-  index: number;
-}
-
-export default function ProgramCard({ icon: Icon, title, description, image, index }: ProgramCardProps) {
+export default function ProgramCard({ icon: Icon, title, description, image, index }) {
   const shouldReduceMotion = useReducedMotion();
 
   return (

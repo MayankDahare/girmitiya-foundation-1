@@ -1,14 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useInView, useReducedMotion } from "framer-motion";
 
-interface CounterProps {
-  value: number;
-  suffix?: string;
-  duration?: number;
-}
-
-export default function Counter({ value, suffix = "", duration = 1600 }: CounterProps) {
-  const ref = useRef<HTMLSpanElement>(null);
+export default function Counter({ value, suffix = "", duration = 1600 }) {
+  const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-40px" });
   const shouldReduceMotion = useReducedMotion();
   const [display, setDisplay] = useState(shouldReduceMotion ? value : 0);
@@ -19,10 +13,10 @@ export default function Counter({ value, suffix = "", duration = 1600 }: Counter
       return;
     }
 
-    let start: number | null = null;
-    let frame: number;
+    let start = null;
+    let frame;
 
-    const step = (timestamp: number) => {
+    const step = (timestamp) => {
       if (start === null) start = timestamp;
       const progress = Math.min((timestamp - start) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
