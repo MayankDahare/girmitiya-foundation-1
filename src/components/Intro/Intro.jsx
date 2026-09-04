@@ -79,7 +79,7 @@ export default function Intro() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-[#FAF7F2] py-16 sm:py-20 lg:py-24"
+      className="relative overflow-hidden bg-[#FAF7F2] pt-14 sm:pt-16 lg:pt-20 pb-4 sm:pb-6 lg:pb-8"
     >
       {/* Background Subtle Luxury Ambient Glow */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">

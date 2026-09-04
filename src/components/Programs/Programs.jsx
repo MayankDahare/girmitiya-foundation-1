@@ -2,6 +2,13 @@ import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 
+import socialWelfareImg from "../../assets/images/social walfare.png";
+import educationImg from "../../assets/images/education and skill.png";
+import womenImg from "../../assets/images/woman empowerment.png";
+import healthImg from "../../assets/images/childrean and healt development.png";
+import cultureImg from "../../assets/images/culture and litrature.png";
+import ancestralImg from "../../assets/images/ancestral connection.png";
+
 // Precise custom SVG icons matching reference design
 function IconSocialWelfare() {
   return (
@@ -88,66 +95,175 @@ const programs = [
     IconComponent: IconSocialWelfare,
     title: "Social Welfare",
     description: "Creating opportunities for underprivileged communities to thrive.",
+    image: socialWelfareImg,
   },
   {
     id: "02",
     IconComponent: IconEducation,
     title: "Education and Skill",
     description: "Empowering youth with learning, training, and employment pathways.",
+    image: educationImg,
   },
   {
     id: "03",
     IconComponent: IconWomen,
     title: "Women Empowerment",
     description: "Helping women gain confidence, independence, and leadership skills.",
+    image: womenImg,
   },
   {
     id: "04",
     IconComponent: IconChildrenHealth,
     title: "Children and Health Development",
     description: "Promoting health, nutrition, and holistic care for children and families.",
+    image: healthImg,
   },
   {
     id: "05",
     IconComponent: IconCulture,
     title: "Culture and Literature",
     description: "Preserving traditions, literature, and art, ensuring India's heritage is celebrated.",
+    image: cultureImg,
   },
   {
     id: "06",
     IconComponent: IconAncestral,
     title: "Ancestral Connection",
     description: "Assisting Girmitiya families to rediscover and connect with their roots in India.",
+    image: ancestralImg,
   },
 ];
 
-// Bottom Button Laurel Left
-function ButtonLaurelLeft() {
+// Modern Art-Deco Kinetic Gold Flourish for "What We Do" Heading (Left)
+function HeadingFlourishLeft({ isHovered = false }) {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
-    <svg width="30" height="26" viewBox="0 0 30 26" fill="none" className="text-[#C59B27]">
-      <path d="M 26 24 C 20 18 12 11 3 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-      <ellipse cx="20" cy="18" rx="3.5" ry="1.8" transform="rotate(-30 20 18)" fill="currentColor" />
-      <ellipse cx="12" cy="12" rx="3.5" ry="1.8" transform="rotate(-40 12 12)" fill="currentColor" />
-      <ellipse cx="5" cy="6" rx="3" ry="1.5" transform="rotate(-45 5 6)" fill="currentColor" />
-    </svg>
+    <motion.div
+      animate={{
+        x: isHovered ? -6 : (shouldReduceMotion ? 0 : [0, -3, 0]),
+        scale: isHovered ? 1.1 : 1,
+      }}
+      transition={{
+        x: isHovered ? { duration: 0.3 } : { duration: 3, repeat: Infinity, ease: "easeInOut" },
+        scale: { duration: 0.3 },
+      }}
+      className="relative flex items-center justify-center select-none"
+    >
+      <svg width="64" height="28" viewBox="0 0 64 28" fill="none" className="text-[#C59B27] drop-shadow-xs">
+        <path d="M 0 14 L 46 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M 12 8 L 44 8" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeOpacity="0.7" />
+        <path d="M 12 20 L 44 20" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeOpacity="0.7" />
+        <polygon points="46,14 53,7 60,14 53,21" fill="currentColor" />
+        <circle cx="53" cy="14" r="2" fill="#FFF2C6" />
+      </svg>
+      <motion.div
+        animate={{
+          scale: [0.7, 1.3, 0.7],
+          opacity: [0.3, 1, 0.3],
+        }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1 right-2 h-1.5 w-1.5 rounded-full bg-[#FFE8A3] blur-[0.5px]"
+      />
+    </motion.div>
   );
 }
 
-// Bottom Button Laurel Right
-function ButtonLaurelRight() {
+// Modern Art-Deco Kinetic Gold Flourish for "What We Do" Heading (Right)
+function HeadingFlourishRight({ isHovered = false }) {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
-    <svg width="30" height="26" viewBox="0 0 30 26" fill="none" className="text-[#C59B27]">
-      <path d="M 4 24 C 10 18 18 11 27 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-      <ellipse cx="10" cy="18" rx="3.5" ry="1.8" transform="rotate(30 10 18)" fill="currentColor" />
-      <ellipse cx="18" cy="12" rx="3.5" ry="1.8" transform="rotate(40 18 12)" fill="currentColor" />
-      <ellipse cx="25" cy="6" rx="3" ry="1.5" transform="rotate(45 25 6)" fill="currentColor" />
-    </svg>
+    <motion.div
+      animate={{
+        x: isHovered ? 6 : (shouldReduceMotion ? 0 : [0, 3, 0]),
+        scale: isHovered ? 1.1 : 1,
+      }}
+      transition={{
+        x: isHovered ? { duration: 0.3 } : { duration: 3, repeat: Infinity, ease: "easeInOut" },
+        scale: { duration: 0.3 },
+      }}
+      className="relative flex items-center justify-center select-none"
+    >
+      <svg width="64" height="28" viewBox="0 0 64 28" fill="none" className="text-[#C59B27] drop-shadow-xs">
+        <path d="M 18 14 L 64 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M 20 8 L 52 8" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeOpacity="0.7" />
+        <path d="M 20 20 L 52 20" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeOpacity="0.7" />
+        <polygon points="4,14 11,7 18,14 11,21" fill="currentColor" />
+        <circle cx="11" cy="14" r="2" fill="#FFF2C6" />
+      </svg>
+      <motion.div
+        animate={{
+          scale: [0.7, 1.3, 0.7],
+          opacity: [0.3, 1, 0.3],
+        }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+        className="absolute top-1 left-2 h-1.5 w-1.5 rounded-full bg-[#FFE8A3] blur-[0.5px]"
+      />
+    </motion.div>
   );
 }
 
-function ProgramCardItem({ id, IconComponent, title, description, index }) {
+// Kinetic Art Deco Gold Ornament for Button (Left)
+function ButtonFlourishLeft({ isHovered = false }) {
+  return (
+    <motion.div
+      animate={{
+        x: isHovered ? -4 : 0,
+        scale: isHovered ? 1.15 : 1,
+      }}
+      transition={{ duration: 0.25 }}
+      className="relative flex items-center justify-center select-none"
+    >
+      <svg width="34" height="20" viewBox="0 0 34 20" fill="none" className="text-[#C59B27] drop-shadow-xs">
+        <path d="M 2 10 L 22 10" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+        <path d="M 10 5 L 20 10 L 10 15" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+        <polygon points="24,10 28,6 32,10 28,14" fill="currentColor" />
+        <circle cx="28" cy="10" r="1.2" fill="#FFF8E0" />
+      </svg>
+      {isHovered && (
+        <motion.span
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: [0.5, 1.4, 0.8], opacity: [0.5, 1, 0.8] }}
+          className="absolute -top-1 left-1 h-1.5 w-1.5 rounded-full bg-[#FFE8A3]"
+        />
+      )}
+    </motion.div>
+  );
+}
+
+// Kinetic Art Deco Gold Ornament for Button (Right)
+function ButtonFlourishRight({ isHovered = false }) {
+  return (
+    <motion.div
+      animate={{
+        x: isHovered ? 4 : 0,
+        scale: isHovered ? 1.15 : 1,
+      }}
+      transition={{ duration: 0.25 }}
+      className="relative flex items-center justify-center select-none"
+    >
+      <svg width="34" height="20" viewBox="0 0 34 20" fill="none" className="text-[#C59B27] drop-shadow-xs">
+        <polygon points="2,10 6,6 10,10 6,14" fill="currentColor" />
+        <circle cx="6" cy="10" r="1.2" fill="#FFF8E0" />
+        <path d="M 24 5 L 14 10 L 24 15" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M 12 10 L 32 10" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+      </svg>
+      {isHovered && (
+        <motion.span
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: [0.5, 1.4, 0.8], opacity: [0.5, 1, 0.8] }}
+          className="absolute -top-1 right-1 h-1.5 w-1.5 rounded-full bg-[#FFE8A3]"
+        />
+      )}
+    </motion.div>
+  );
+}
+
+function ProgramCardItem({ id, IconComponent, title, description, image, index }) {
   const shouldReduceMotion = useReducedMotion();
   const [isHovered, setIsHovered] = useState(false);
+  const [btnHovered, setBtnHovered] = useState(false);
 
   return (
     <motion.div
@@ -158,33 +274,35 @@ function ProgramCardItem({ id, IconComponent, title, description, index }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       whileHover={{ y: -6 }}
-      className="group relative flex flex-col items-center pt-9 pb-7 px-5 sm:px-6 rounded-2xl bg-[#FCFAF6] border-2 border-[#E7DECD] shadow-[0_12px_32px_rgba(20,27,45,0.05)] transition-all duration-300 hover:border-[#C59B27] hover:shadow-[0_18px_45px_rgba(197,155,39,0.18)]"
+      className="group relative flex flex-col items-center pt-9 pb-7 px-5 sm:px-6 rounded-2xl bg-[#FCFAF6] border-2 border-[#E7DECD] shadow-[0_12px_32px_rgba(20,27,45,0.05)] transition-all duration-300 hover:border-[#C59B27] hover:shadow-[0_18px_45px_rgba(197,155,39,0.18)] overflow-visible"
     >
-      {/* SVG Concave Notched Certificate Border Frame Overlay */}
-      <svg
-        className="pointer-events-none absolute inset-0 h-full w-full"
-        preserveAspectRatio="none"
-        viewBox="0 0 360 300"
-      >
-        <rect
-          x="8"
-          y="8"
-          width="344"
-          height="284"
-          rx="12"
-          fill="none"
-          stroke="#C59B27"
-          strokeWidth="1"
-          strokeOpacity="0.3"
+      {/* Golden Border Rectangular Frame Area with Fitted Full Image */}
+      <div className="absolute inset-2 rounded-xl overflow-hidden pointer-events-none z-0">
+        {/* Background Initiative Image - Clearly Visible */}
+        <motion.img
+          src={image}
+          alt={title}
+          animate={{ scale: isHovered ? 1.08 : 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="h-full w-full object-cover object-center opacity-90 transition-opacity duration-300 group-hover:opacity-100"
         />
-        <circle cx="16" cy="16" r="2" fill="#C59B27" fillOpacity="0.6" />
-        <circle cx="344" cy="16" r="2" fill="#C59B27" fillOpacity="0.6" />
-        <circle cx="16" cy="284" r="2" fill="#C59B27" fillOpacity="0.6" />
-        <circle cx="344" cy="284" r="2" fill="#C59B27" fillOpacity="0.6" />
-      </svg>
+
+        {/* Soft Contrast Scrim: Top is clear/transparent so image shines, bottom ensures text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#FCFAF6] via-[#FCFAF6]/75 via-45% to-transparent transition-opacity duration-300 group-hover:opacity-85" />
+        <div className="absolute inset-0 bg-[#FCFAF6]/25" />
+
+        {/* Inner Hairline Golden Border */}
+        <div className="absolute inset-0 rounded-xl border border-[#C59B27]/40 pointer-events-none" />
+
+        {/* 4 Corner Brass Rivets */}
+        <span className="absolute top-2 left-2 h-1.5 w-1.5 rounded-full bg-[#C59B27]/70" />
+        <span className="absolute top-2 right-2 h-1.5 w-1.5 rounded-full bg-[#C59B27]/70" />
+        <span className="absolute bottom-2 left-2 h-1.5 w-1.5 rounded-full bg-[#C59B27]/70" />
+        <span className="absolute bottom-2 right-2 h-1.5 w-1.5 rounded-full bg-[#C59B27]/70" />
+      </div>
 
       {/* Top Overlapping Animated Golden Orbit & Badge */}
-      <div className="absolute -top-7 left-1/2 -translate-x-1/2 flex items-center justify-center z-10 select-none">
+      <div className="absolute -top-7 left-1/2 -translate-x-1/2 flex items-center justify-center z-20 select-none">
         {/* Animated Golden Orbit Rings SVG */}
         <motion.svg
           viewBox="0 0 96 96"
@@ -196,7 +314,6 @@ function ProgramCardItem({ id, IconComponent, title, description, index }) {
             ease: "linear",
           }}
         >
-          {/* Outer Dashed Orbit Ring */}
           <circle
             cx="48"
             cy="48"
@@ -207,7 +324,6 @@ function ProgramCardItem({ id, IconComponent, title, description, index }) {
             strokeDasharray="4 4"
             strokeOpacity={isHovered ? "0.9" : "0.45"}
           />
-          {/* Revolving Orbit Satellite Dot */}
           <circle cx="48" cy="4" r="2.5" fill="#E5B869" />
           <circle cx="48" cy="92" r="1.8" fill="#C59B27" />
         </motion.svg>
@@ -235,10 +351,10 @@ function ProgramCardItem({ id, IconComponent, title, description, index }) {
         </motion.div>
       </div>
 
-      {/* Card Content */}
+      {/* Card Content (Layered over the background image) */}
       <div className="relative z-10 flex flex-1 flex-col items-center text-center mt-2.5 w-full">
         {/* Initiative Number 01 - 06 */}
-        <span className="font-display text-base sm:text-lg font-bold text-[#B9873A] tracking-wider">
+        <span className="font-display text-base sm:text-lg font-bold text-[#B9873A] tracking-wider drop-shadow-xs">
           {id}
         </span>
 
@@ -253,27 +369,33 @@ function ProgramCardItem({ id, IconComponent, title, description, index }) {
         </div>
 
         {/* Initiative Description */}
-        <p className="mt-1 text-xs sm:text-[13.5px] leading-relaxed text-[#4B5563] max-w-[270px] flex-1">
+        <p className="mt-1 text-xs sm:text-[13.5px] leading-relaxed text-[#374151] max-w-[270px] flex-1 font-medium">
           {description}
         </p>
 
-        {/* Bottom READ MORE Button with Laurel Accents */}
-        <div className="mt-5 flex items-center justify-center gap-1.5 w-full">
-          <div className="transition-transform duration-300 group-hover:-translate-x-1">
-            <ButtonLaurelLeft />
-          </div>
+        {/* Bottom READ MORE Button with Animated SVGs (Left & Right) */}
+        <div
+          className="mt-5 flex items-center justify-center gap-2 w-full"
+          onMouseEnter={() => setBtnHovered(true)}
+          onMouseLeave={() => setBtnHovered(false)}
+        >
+          {/* Animated Left SVG */}
+          <ButtonFlourishLeft isHovered={btnHovered || isHovered} />
 
-          <a
+          {/* READ MORE Button */}
+          <motion.a
             href="#programs"
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.96 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
             className="group/btn relative inline-flex items-center gap-1.5 rounded-md bg-[#B8860B] hover:bg-[#A67809] px-5 py-2 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-white shadow-sm shadow-[#B8860B]/30 transition-all duration-300 hover:shadow-md cursor-pointer"
           >
             <span>READ MORE</span>
             <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" />
-          </a>
+          </motion.a>
 
-          <div className="transition-transform duration-300 group-hover:translate-x-1">
-            <ButtonLaurelRight />
-          </div>
+          {/* Animated Right SVG */}
+          <ButtonFlourishRight isHovered={btnHovered || isHovered} />
         </div>
       </div>
     </motion.div>
@@ -282,27 +404,39 @@ function ProgramCardItem({ id, IconComponent, title, description, index }) {
 
 export default function Programs() {
   const shouldReduceMotion = useReducedMotion();
+  const [headerHovered, setHeaderHovered] = useState(false);
 
   return (
-    <section id="programs" className="relative overflow-hidden bg-[#FAF7F2] py-20 sm:py-24 lg:py-28">
+    <section id="programs" className="relative overflow-hidden bg-[#FAF7F2] pt-4 sm:pt-6 lg:pt-8 pb-4 sm:pb-6 lg:pb-8">
       {/* Background Subtle Golden Aura */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute left-1/2 top-1/3 -translate-x-1/2 h-[550px] w-[850px] rounded-full bg-[#C59B27]/5 blur-3xl" />
       </div>
 
       <div className="content-container relative z-10">
-        {/* Section Header with Clean Heading */}
+        {/* Section Header with Animated SVGs on Left & Right of "What We Do" */}
         <motion.div
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="mx-auto max-w-3xl text-center"
+          onMouseEnter={() => setHeaderHovered(true)}
+          onMouseLeave={() => setHeaderHovered(false)}
         >
-          {/* Main Serif Heading */}
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#18181B]">
-            What We Do
-          </h2>
+          {/* Heading Flanked by Animated Golden Art-Deco Flourish SVGs */}
+          <div className="flex items-center justify-center gap-2.5 sm:gap-4">
+            {/* Animated Left Heading SVG */}
+            <HeadingFlourishLeft isHovered={headerHovered} />
+
+            {/* Main Serif Heading */}
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#18181B] cursor-default whitespace-nowrap">
+              What We Do
+            </h2>
+
+            {/* Animated Right Heading SVG */}
+            <HeadingFlourishRight isHovered={headerHovered} />
+          </div>
 
           {/* Under-heading Star */}
           <div className="mt-2.5 flex items-center justify-center">
