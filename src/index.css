@@ -1,31 +1,60 @@
 @import "tailwindcss";
 
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Inter:wght@400;500;600;700;800&display=swap");
+/* Typography system
+   One modern sans family carries the whole interface; a serif italic is used
+   only as an accent for emphasised words.
+   Headings / body / UI : Geist — contemporary grotesk, set tight and semibold
+                          for headings, relaxed for reading.
+   Accent               : Instrument Serif italic — editorial warmth for single
+                          emphasised words ("roots", "home"), never whole blocks.
+   Labels / data        : Geist Mono — eyebrows, years, counters.
+   Fonts are loaded in index.html. */
 
 @theme {
   /* Colors — sampled from the approved design */
-  --color-navy-950: #0a1524;
+  --color-navy-950: #0a101d;
   --color-navy-900: #0e1c30;
   --color-navy-800: #14273e;
   --color-navy-700: #1c3350;
   --color-gold-600: #b9873a;
-  --color-gold-500: #c99a4b;
+  --color-gold-500: #c59b27;
   --color-gold-400: #d9b167;
   --color-gold-100: #f2e2c2;
-  --color-cream-100: #f6f1e4;
-  --color-cream-200: #f0e9d8;
-  --color-cream-300: #e8dfc7;
-  --color-ink-900: #17202c;
+  --color-cream-100: #faf7f2;
+  --color-cream-200: #f2ece1;
+  --color-cream-300: #e7decd;
+  --color-ink-900: #18181b;
   --color-ink-700: #3c4553;
   --color-ink-500: #6b7280;
   --color-maroon-700: #7c1f2a;
 
   /* Type */
-  --font-display: "Playfair Display", "Georgia", serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 
   /* Container */
   --container-content: 1280px;
+}
+
+@theme {
+  /* Type scale — one ladder used across every section. Fluid so tablet
+     never lands between two fixed steps. Ratio ≈ 1.25 at body, wider at top. */
+  --text-eyebrow: 0.72rem;
+  --text-display: clamp(2.75rem, 1.55rem + 4.4vw, 5.25rem);
+  --text-h1: clamp(2.4rem, 1.5rem + 3.4vw, 4.25rem);
+  --text-h2: clamp(2rem, 1.45rem + 2.3vw, 3.25rem);
+  --text-h3: clamp(1.15rem, 1.06rem + 0.38vw, 1.375rem);
+  --text-lead: clamp(1.05rem, 0.99rem + 0.26vw, 1.2rem);
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+
+  /* Image scrims — one system, used everywhere text sits over photography.
+     Never a white wash: the photograph stays legible underneath. */
+  --scrim-soft: rgba(10, 15, 24, 0.28);
+  --scrim-base: rgba(10, 15, 24, 0.36);
+  --scrim-deep: rgba(10, 15, 24, 0.46);
 }
 
 @layer base {
@@ -35,13 +64,34 @@
 
   body {
     font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: var(--text-body);
+    line-height: 1.6;
     color: var(--color-ink-900);
     background-color: var(--color-cream-100);
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Stats and counters should not jitter as digits change */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
   }
 
   :focus-visible {
@@ -49,8 +99,14 @@
     outline-offset: 3px;
   }
 
+  ::selection {
+    background: rgba(197, 155, 39, 0.28);
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
@@ -73,13 +129,147 @@
     }
   }
 
-  .eyebrow {
-    font-family: var(--font-sans);
+  /* ---- Type utilities ------------------------------------------------- */
+  /* Hierarchy: display (hero / footer) → h1 → h2 (section) → h3 (card)
+     → lead → body → small; eyebrow + accent are modifiers. */
+
+  .t-eyebrow {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: var(--text-eyebrow);
+    line-height: 1;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .t-display {
+    font-family: var(--font-display);
     font-weight: 600;
-    font-size: 0.8rem;
-    letter-spacing: 0.08em;
+    font-size: var(--text-display);
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+  }
+
+  .t-h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--text-h1);
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+  }
+
+  .t-h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--text-h2);
+    line-height: 1.06;
+    letter-spacing: -0.035em;
+  }
+
+  .t-h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--text-h3);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+
+  .t-lead {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: var(--text-lead);
+    line-height: 1.6;
+    letter-spacing: -0.005em;
+  }
+
+  .t-body {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: var(--text-body);
+    line-height: 1.65;
+  }
+
+  .t-small {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: var(--text-small);
+    line-height: 1.55;
+  }
+
+  /* Big numbers: counters, stats, clocks. */
+  .t-stat {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Emphasised word inside a heading. Instrument Serif runs small next to
+     Geist, so it is bumped up and its tracking reset. */
+  .t-accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.08em;
+    letter-spacing: -0.015em;
+    line-height: inherit;
+  }
+
+  /* Retained: the original eyebrow class is referenced by older markup. */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: var(--text-eyebrow);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
     color: var(--color-gold-600);
   }
+
+  /* ---- Image scrims --------------------------------------------------- */
+  /* Applied to an absolutely positioned element sitting directly above an
+     image. Dark and translucent so the photograph reads through it. */
+
+  .media-scrim {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .scrim-soft {
+    background-color: var(--scrim-soft);
+  }
+
+  .scrim-base {
+    background-color: var(--scrim-base);
+  }
+
+  .scrim-deep {
+    background-color: var(--scrim-deep);
+  }
+
+  /* Directional scrims for text anchored to one edge of a photograph. */
+  .scrim-bottom {
+    background-image: linear-gradient(
+      to top,
+      rgba(10, 15, 24, 0.84) 0%,
+      rgba(10, 15, 24, 0.6) 26%,
+      rgba(10, 15, 24, 0.24) 58%,
+      rgba(10, 15, 24, 0.05) 100%
+    );
+  }
+
+  .scrim-inline {
+    background-image: linear-gradient(
+      100deg,
+      rgba(10, 15, 24, 0.78) 0%,
+      rgba(10, 15, 24, 0.62) 34%,
+      rgba(10, 15, 24, 0.34) 68%,
+      rgba(10, 15, 24, 0.2) 100%
+    );
+  }
+
+  /* ---- Buttons -------------------------------------------------------- */
 
   .btn-gold {
     display: inline-flex;
@@ -87,14 +277,16 @@
     gap: 0.5rem;
     background-color: var(--color-gold-500);
     color: var(--color-navy-950);
+    font-family: var(--font-sans);
     font-weight: 600;
-    padding: 0.85rem 1.6rem;
-    border-radius: 0.25rem;
-    transition: background-color 180ms ease, transform 180ms ease;
+    font-size: 0.925rem;
+    letter-spacing: 0.005em;
+    padding: 0.82rem 1.55rem;
+    border-radius: 3px;
+    transition: background-color 180ms ease;
   }
   .btn-gold:hover {
     background-color: var(--color-gold-400);
-    transform: translateY(-1px);
   }
 
   .btn-outline {
@@ -103,14 +295,24 @@
     gap: 0.5rem;
     background-color: transparent;
     color: var(--color-cream-100);
+    font-family: var(--font-sans);
     font-weight: 600;
-    padding: 0.85rem 1.6rem;
-    border-radius: 0.25rem;
-    border: 1px solid rgba(246, 241, 228, 0.35);
+    font-size: 0.925rem;
+    padding: 0.82rem 1.55rem;
+    border-radius: 3px;
+    border: 1px solid rgba(250, 247, 242, 0.4);
     transition: background-color 180ms ease, border-color 180ms ease;
   }
   .btn-outline:hover {
-    background-color: rgba(246, 241, 228, 0.08);
-    border-color: rgba(246, 241, 228, 0.6);
+    background-color: rgba(250, 247, 242, 0.1);
+    border-color: rgba(250, 247, 242, 0.72);
+  }
+
+  /* Editorial hairline rule used to separate an eyebrow from its heading. */
+  .rule-gold {
+    display: inline-block;
+    width: 2.5rem;
+    height: 1px;
+    background-color: rgba(197, 155, 39, 0.75);
   }
 }

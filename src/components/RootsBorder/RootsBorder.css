@@ -1,0 +1,76 @@
+/* Fixed frame of roots along the left and right edges of the viewport.
+   Sits above page content but never takes input. */
+.roots-border {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.roots-border__side {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+}
+
+.roots-border__side--left {
+  left: 0;
+}
+
+/* Mirror the generated left-edge geometry onto the right edge. */
+.roots-border__side--right {
+  right: 0;
+  transform: scaleX(-1);
+}
+
+.roots-border__svg {
+  display: block;
+  overflow: visible;
+  transform-origin: 50% 0%;
+  will-change: transform;
+}
+
+.roots-border__trunk {
+  filter: drop-shadow(0 0 3px rgba(197, 155, 39, 0.35));
+}
+
+.roots-border__branch {
+  opacity: 0;
+  transition: opacity 160ms ease-out;
+}
+
+.roots-border__tip {
+  fill: #f2e2c2;
+  opacity: 0;
+}
+
+.roots-border__tip-glow {
+  fill: rgba(229, 184, 105, 0.35);
+  filter: blur(4px);
+  opacity: 0;
+}
+
+.roots-border__tip,
+.roots-border__tip-glow {
+  transition: opacity 200ms ease-out;
+}
+
+/* Thin on small screens so the roots frame content instead of covering it. */
+@media (max-width: 767px) {
+  .roots-border__side {
+    width: 64px;
+  }
+  .roots-border__svg {
+    transform-origin: 0 0;
+    scale: 0.55 1;
+    opacity: 0.7;
+  }
+}
+
+@media print {
+  .roots-border {
+    display: none;
+  }
+}

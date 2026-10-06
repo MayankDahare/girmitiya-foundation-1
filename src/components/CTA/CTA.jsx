@@ -22,10 +22,10 @@ export default function CTA() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <h2 className="font-display text-2xl font-bold text-cream-100 sm:text-3xl">
-            Be a Part of This Journey
+          <h2 className="t-h2 text-cream-100">
+            Be a part of this <span className="t-accent text-gold-400">journey</span>
           </h2>
-          <p className="mt-2 max-w-md text-sm leading-relaxed text-cream-100/70">
+          <p className="t-body mt-3 max-w-md text-cream-100/70">
             Together, we can preserve heritage, transform lives and reconnect
             generations. Your support makes it possible.
           </p>

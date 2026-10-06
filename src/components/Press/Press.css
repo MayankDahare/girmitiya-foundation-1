@@ -1,0 +1,103 @@
+.pr {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(4rem, 8vw, 6.5rem);
+  background: var(--color-cream-100);
+  border-top: 1px solid rgba(24, 24, 27, 0.06);
+}
+
+.pr-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+}
+.pr-eyebrow {
+  width: 100%;
+  color: var(--color-gold-600);
+}
+.pr-title {
+  color: var(--color-ink-900);
+}
+.pr-title .t-accent {
+  color: var(--color-gold-600);
+}
+
+/* Logo marquee: right → left, pauses on hover. */
+.pr-marquee {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.pr-track {
+  display: flex;
+  width: max-content;
+  animation: pr-scroll 55s linear infinite;
+}
+.pr-marquee:hover .pr-track {
+  animation-play-state: paused;
+}
+
+.pr-logo {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: clamp(150px, 15vw, 210px);
+  aspect-ratio: 5 / 2;
+  margin-right: 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(24, 24, 27, 0.07);
+  border-radius: 0.6rem;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(24, 24, 27, 0.04);
+  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 300ms ease, border-color 300ms ease;
+}
+.pr-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: grayscale(1) contrast(1.05);
+  opacity: 0.72;
+  transition: filter 300ms ease, opacity 300ms ease;
+}
+.pr-logo:hover {
+  transform: translateY(-3px);
+  border-color: rgba(185, 135, 58, 0.45);
+  box-shadow: 0 12px 24px rgba(83, 60, 25, 0.1);
+}
+.pr-logo:hover img {
+  filter: none;
+  opacity: 1;
+}
+
+.pr-partners {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem 2rem;
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+.pr-partners-label {
+  color: var(--color-ink-500);
+}
+.pr-partners-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.pr-logo--partner {
+  width: clamp(130px, 12vw, 170px);
+  margin-right: 0;
+}
+
+@keyframes pr-scroll {
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pr-track { animation: none; flex-wrap: wrap; width: auto; justify-content: center; padding-inline: 1.25rem; row-gap: 1rem; }
+  .pr-track li[aria-hidden="true"] { display: none; }
+  .pr-marquee { -webkit-mask-image: none; mask-image: none; }
+}

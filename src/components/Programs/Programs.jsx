@@ -274,7 +274,7 @@ function ProgramCardItem({ id, IconComponent, title, description, image, index }
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       whileHover={{ y: -6 }}
-      className="group relative flex flex-col items-center pt-9 pb-7 px-5 sm:px-6 rounded-2xl bg-[#FCFAF6] border-2 border-[#E7DECD] shadow-[0_12px_32px_rgba(20,27,45,0.05)] transition-all duration-300 hover:border-[#C59B27] hover:shadow-[0_18px_45px_rgba(197,155,39,0.18)] overflow-visible"
+      className="group relative flex flex-col items-center pt-9 pb-7 px-5 sm:px-6 rounded-2xl bg-[#0A101D] border-2 border-[#E7DECD] shadow-[0_12px_32px_rgba(20,27,45,0.05)] transition-[border-color,box-shadow] duration-300 hover:border-[#C59B27] hover:shadow-[0_18px_45px_rgba(197,155,39,0.18)] overflow-visible"
     >
       {/* Golden Border Rectangular Frame Area with Fitted Full Image */}
       <div className="absolute inset-2 rounded-xl overflow-hidden pointer-events-none z-0">
@@ -287,9 +287,9 @@ function ProgramCardItem({ id, IconComponent, title, description, image, index }
           className="h-full w-full object-cover object-center opacity-90 transition-opacity duration-300 group-hover:opacity-100"
         />
 
-        {/* Soft Contrast Scrim: Top is clear/transparent so image shines, bottom ensures text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#FCFAF6] via-[#FCFAF6]/75 via-45% to-transparent transition-opacity duration-300 group-hover:opacity-85" />
-        <div className="absolute inset-0 bg-[#FCFAF6]/25" />
+        {/* Dark scrim: top stays open so the photograph reads, bottom carries the copy */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/65 via-50% to-black/15 transition-opacity duration-300 group-hover:opacity-90" />
+        <div className="absolute inset-0 bg-black/20" />
 
         {/* Inner Hairline Golden Border */}
         <div className="absolute inset-0 rounded-xl border border-[#C59B27]/40 pointer-events-none" />
@@ -354,12 +354,12 @@ function ProgramCardItem({ id, IconComponent, title, description, image, index }
       {/* Card Content (Layered over the background image) */}
       <div className="relative z-10 flex flex-1 flex-col items-center text-center mt-2.5 w-full">
         {/* Initiative Number 01 - 06 */}
-        <span className="font-display text-base sm:text-lg font-bold text-[#B9873A] tracking-wider drop-shadow-xs">
+        <span className="font-mono text-xs font-medium tracking-[0.2em] text-[#E5B869]">
           {id}
         </span>
 
         {/* Initiative Title */}
-        <h3 className="mt-1 font-display text-xl sm:text-[22px] font-bold text-[#18181B] leading-snug min-h-[56px] flex items-center justify-center px-1">
+        <h3 className="t-h3 mt-2 text-[#FAF7F2] min-h-[56px] flex items-center justify-center px-1">
           {title}
         </h3>
 
@@ -369,7 +369,7 @@ function ProgramCardItem({ id, IconComponent, title, description, image, index }
         </div>
 
         {/* Initiative Description */}
-        <p className="mt-1 text-xs sm:text-[13.5px] leading-relaxed text-[#374151] max-w-[270px] flex-1 font-medium">
+        <p className="t-small mt-1 text-white/78 max-w-[270px] flex-1">
           {description}
         </p>
 
@@ -388,7 +388,7 @@ function ProgramCardItem({ id, IconComponent, title, description, image, index }
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.96 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            className="group/btn relative inline-flex items-center gap-1.5 rounded-md bg-[#B8860B] hover:bg-[#A67809] px-5 py-2 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-white shadow-sm shadow-[#B8860B]/30 transition-all duration-300 hover:shadow-md cursor-pointer"
+            className="group/btn relative inline-flex items-center gap-1.5 rounded-md bg-[#B8860B] hover:bg-[#A67809] px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.12em] text-white shadow-sm shadow-[#B8860B]/30 transition-all duration-300 hover:shadow-md cursor-pointer"
           >
             <span>READ MORE</span>
             <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" />
@@ -430,8 +430,8 @@ export default function Programs() {
             <HeadingFlourishLeft isHovered={headerHovered} />
 
             {/* Main Serif Heading */}
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#18181B] cursor-default whitespace-nowrap">
-              What We Do
+            <h2 className="t-h2 text-[#18181B] cursor-default whitespace-nowrap">
+              What We <span className="t-accent text-[#B9873A]">Do</span>
             </h2>
 
             {/* Animated Right Heading SVG */}
@@ -444,13 +444,13 @@ export default function Programs() {
           </div>
 
           {/* Subtitle / Statement */}
-          <p className="mt-3 text-sm sm:text-base leading-relaxed text-[#4B5563]">
+          <p className="t-lead mt-5 text-[#4B5563]">
             At Girmitiya Foundation, we believe{" "}
-            <strong className="font-bold text-[#B9873A]">
+            <strong className="font-semibold text-[#B9873A]">
               every individual and community has potential waiting to be unlocked.
             </strong>
           </p>
-          <p className="mt-1 text-xs sm:text-sm font-medium text-[#4B5563]">
+          <p className="t-eyebrow mt-4 text-[#6B7280]">
             Our initiatives focus on:
           </p>
         </motion.div>

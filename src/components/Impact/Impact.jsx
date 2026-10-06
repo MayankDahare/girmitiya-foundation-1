@@ -340,23 +340,23 @@ export default function Impact() {
           {/* Eyebrow with Flanking Horizontal Lines */}
           <div className="flex items-center justify-center gap-3">
             <span className="h-px w-8 sm:w-12 bg-[#B9873A]/60" />
-            <p className="font-sans text-xs sm:text-sm font-semibold tracking-[0.25em] text-[#B9873A] uppercase">
+            <p className="t-eyebrow text-[#B9873A]">
               GIRMITIYA FOUNDATION
             </p>
             <span className="h-px w-8 sm:w-12 bg-[#B9873A]/60" />
           </div>
 
           {/* Main Headline */}
-          <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-[2.85rem] font-bold text-[#18181B] leading-[1.18] tracking-tight">
+          <h2 className="t-h2 mt-5 text-[#18181B]">
             A Lifelong Journey of{" "}
-            <span className="block sm:inline text-[#B5732A]">
+            <span className="t-accent block text-[#B5732A]">
               Reconnection and Belonging
             </span>
           </h2>
 
           {/* Description Paragraph */}
-          <p className="mt-4 max-w-2xl mx-auto text-xs sm:text-[13.5px] leading-relaxed text-[#4B5563]">
-            The <strong className="font-bold text-[#18181B]">Girmitiya Foundation</strong> is dedicated
+          <p className="t-lead mt-5 max-w-2xl mx-auto text-[#4B5563]">
+            The <strong className="font-semibold text-[#18181B]">Girmitiya Foundation</strong> is dedicated
             to transforming dreams of reconnecting with ancestral heritage into a reality.
             Our mission is to bridge the gap of generations, linking the Indian diaspora
             with their roots. We believe that a strong sense of identity, culture, and pride
@@ -404,12 +404,12 @@ export default function Impact() {
                 </div>
 
                 {/* Metric Number with Live Counter Animation */}
-                <div className="mt-1 font-display text-3xl sm:text-4xl font-bold text-[#18181B] tracking-tight">
+                <div className="t-stat mt-2 text-4xl sm:text-5xl text-[#18181B]">
                   <Counter value={stat.value} suffix={stat.suffix} />
                 </div>
 
                 {/* Metric Label */}
-                <p className="mt-1.5 text-xs sm:text-[13px] font-medium text-[#4B5563] leading-snug max-w-[180px]">
+                <p className="t-small mt-2 font-medium text-[#4B5563] max-w-[180px]">
                   {stat.label}
                 </p>
 

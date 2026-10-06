@@ -31,13 +31,13 @@ export default function Navbar() {
             className="h-14 w-14 sm:h-16 sm:w-16 md:h-20 md:w-20 object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-xs"
           />
           <span className="flex flex-col leading-tight">
-            <span className="font-display text-base font-bold tracking-wide text-[#1A1A1A] sm:text-lg md:text-xl">
+            <span className="font-display text-base font-semibold tracking-[0.02em] text-[#1A1A1A] sm:text-lg md:text-xl">
               GIRMITIYA
             </span>
-            <span className="text-[10px] font-semibold tracking-[0.22em] text-[#1A1A1A] sm:text-xs">
+            <span className="font-mono text-[10px] font-medium tracking-[0.24em] text-[#1A1A1A]/80 sm:text-[11px]">
               FOUNDATION
             </span>
-            <span className="mt-0.5 font-display text-[11px] italic text-[#C59B27] sm:text-xs block">
+            <span className="mt-0.5 font-serif text-[13px] italic text-[#B9873A] sm:text-sm block">
               Reconnect to your roots
             </span>
           </span>
@@ -51,7 +51,7 @@ export default function Navbar() {
               <li key={link.label} className="relative py-2">
                 <a
                   href={link.href}
-                  className={`flex items-center gap-1 text-sm font-medium transition-colors ${
+                  className={`flex items-center gap-1 text-[14.5px] font-medium tracking-[-0.01em] transition-colors ${
                     isHome
                       ? "text-[#1A1A1A] font-semibold"
                       : "text-[#2C2C2C] hover:text-[#C59B27]"

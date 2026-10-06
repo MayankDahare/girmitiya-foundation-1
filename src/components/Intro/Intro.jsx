@@ -98,7 +98,7 @@ export default function Intro() {
         >
           {/* Eyebrow with Classical Ornate Gold Flourish */}
           <div className="flex items-center gap-3">
-            <span className="font-sans text-xs sm:text-sm font-bold tracking-[0.25em] text-[#B9873A] uppercase">
+            <span className="t-eyebrow text-[#B9873A]">
               WELCOME TO
             </span>
             {/* Elegant Filigree Ornament */}
@@ -127,8 +127,8 @@ export default function Intro() {
           </div>
 
           {/* Main Serif Heading */}
-          <h2 className="mt-2.5 font-display text-3xl sm:text-4xl lg:text-[2.9rem] font-bold tracking-tight text-[#18181B] leading-[1.15]">
-            Girmitiya Foundation
+          <h2 className="t-h2 mt-4 text-[#18181B]">
+            Girmitiya <span className="t-accent text-[#B9873A]">Foundation</span>
           </h2>
 
           {/* Under-heading Ornate Gold Filigree Divider */}
@@ -154,14 +154,14 @@ export default function Intro() {
           </div>
 
           {/* Intro Description */}
-          <p className="mt-4 max-w-xl text-sm sm:text-[14.5px] leading-relaxed text-[#4B5563]">
+          <p className="t-lead mt-5 max-w-xl text-[#4B5563]">
             Girmitiya Foundation is a socio-cultural and educational skill development
             trust focused on improving lives through{" "}
-            <strong className="font-bold text-[#18181B]">
+            <strong className="font-semibold text-[#18181B]">
               Education, Women Empowerment,
             </strong>{" "}
-            <strong className="font-bold text-[#18181B]">Skill training</strong> and{" "}
-            <strong className="font-bold text-[#18181B]">Cultural</strong>{" "}
+            <strong className="font-semibold text-[#18181B]">Skill training</strong> and{" "}
+            <strong className="font-semibold text-[#18181B]">Cultural</strong>{" "}
             enrichment, particularly among marginalized and underprivileged
             communities.
           </p>
@@ -200,15 +200,15 @@ export default function Intro() {
                   </div>
 
                   {/* Text Content */}
-                  <p className="text-xs sm:text-[13.5px] leading-relaxed text-[#374151]">
+                  <p className="t-small text-[#374151]">
                     {card.bold1 ? (
                       <>
                         {card.text}{" "}
-                        <strong className="font-bold text-[#18181B]">
+                        <strong className="font-semibold text-[#18181B]">
                           {card.bold1}
                         </strong>{" "}
                         {card.text2}{" "}
-                        <strong className="font-bold text-[#18181B]">
+                        <strong className="font-semibold text-[#18181B]">
                           {card.bold2}
                         </strong>
                       </>
@@ -307,10 +307,10 @@ export default function Intro() {
               </div>
 
               {/* Brand Typography */}
-              <h3 className="mt-1 font-serif text-2xl sm:text-3xl font-extrabold tracking-[0.18em] text-[#18181B] uppercase">
+              <h3 className="mt-1 font-display text-2xl sm:text-3xl font-semibold tracking-[0.16em] text-[#18181B] uppercase">
                 GIRMITIYA
               </h3>
-              <p className="mt-0.5 font-serif text-xs sm:text-sm font-bold tracking-[0.28em] text-[#18181B] uppercase">
+              <p className="mt-1 font-mono text-[11px] sm:text-xs font-medium tracking-[0.28em] text-[#18181B]/80 uppercase">
                 — FOUNDATION —
               </p>
 
@@ -336,7 +336,7 @@ export default function Intro() {
               </div>
 
               {/* Est. 2019 Tag */}
-              <p className="mt-1 font-sans text-[10.5px] sm:text-xs font-bold tracking-[0.25em] text-[#C59B27] uppercase">
+              <p className="t-eyebrow mt-1.5 text-[#B9873A]">
                 EST. 2019
               </p>
 
@@ -356,7 +356,7 @@ export default function Intro() {
                       </div>
 
                       {/* Metric Title */}
-                      <span className="font-sans text-[8.5px] sm:text-[9.5px] font-bold tracking-tight text-[#18181B] uppercase leading-tight line-clamp-2">
+                      <span className="font-mono text-[9px] sm:text-[10px] font-medium tracking-[0.04em] text-[#18181B] uppercase leading-tight line-clamp-2">
                         {stat.title}
                       </span>
 
@@ -376,7 +376,7 @@ export default function Intro() {
                   <span className="text-[#C59B27] text-xs">★</span>
 
                   {/* Ribbon Text */}
-                  <span className="font-serif text-[10px] sm:text-[11.5px] font-bold tracking-[0.14em] text-[#FAF7F2] uppercase text-center">
+                  <span className="font-mono text-[10px] sm:text-[11px] font-medium tracking-[0.16em] text-[#FAF7F2] uppercase text-center">
                     ROOTED IN HERITAGE • GROWING THE FUTURE
                   </span>
 

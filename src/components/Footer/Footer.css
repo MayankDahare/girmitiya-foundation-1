@@ -1,0 +1,545 @@
+/* ==========================================================================
+   Footer — "The Voyage Home"
+   Near-black field, one gold accent, oversized serif. Motion is scroll-driven
+   (statement, routes, wordmark fill) plus a cursor spotlight and a magnetic CTA.
+   ========================================================================== */
+
+.vf {
+  --vf-bg: #05070c;
+  --vf-ink: #f5efe3;
+  --vf-muted: rgba(245, 239, 227, 0.56);
+  --vf-faint: rgba(245, 239, 227, 0.12);
+  --vf-gold: #d9b167;
+  --vf-gold-deep: #c59b27;
+  --vf-ease: cubic-bezier(0.23, 1, 0.32, 1);
+  --mx: 50%;
+  --my: 30%;
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--vf-bg);
+  color: var(--vf-ink);
+  padding-top: clamp(5rem, 10vw, 9rem);
+}
+
+.vf-spotlight {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(600px circle at var(--mx) var(--my), rgba(217, 177, 103, 0.11), transparent 60%);
+  transition: background 80ms linear;
+}
+
+.vf-grain {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(197, 155, 39, 0.08), transparent 70%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.018) 0 1px, transparent 1px 120px);
+}
+
+.vf-inner {
+  width: 100%;
+  max-width: 1320px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+/* ---- 1. Statement ------------------------------------------------------ */
+
+.vf-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--vf-gold);
+  font: 500 var(--text-eyebrow)/1 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.vf-kicker-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--vf-gold);
+  box-shadow: 0 0 0 4px rgba(217, 177, 103, 0.18);
+  animation: vf-pulse 2.4s ease-in-out infinite;
+}
+
+.vf-statement {
+  margin-top: 1.6rem;
+  max-width: 14ch;
+  font: 600 clamp(3.2rem, 9vw, 9rem) / 0.92 var(--font-display);
+  letter-spacing: -0.055em;
+}
+.vf-word {
+  display: inline-block;
+  margin-right: 0.22em;
+  will-change: transform, opacity;
+}
+.vf-word:nth-child(2),
+.vf-word:nth-child(6) {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.1em;
+  letter-spacing: -0.02em;
+  color: var(--vf-gold);
+}
+
+.vf-hero-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2.5rem;
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+}
+.vf-lede {
+  max-width: 34rem;
+  color: var(--vf-muted);
+  font: 400 var(--text-lead) / 1.6 var(--font-sans);
+}
+
+/* Magnetic CTA */
+.vf-magnet {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: clamp(9rem, 14vw, 11.5rem);
+  aspect-ratio: 1;
+  border: 1px solid rgba(217, 177, 103, 0.55);
+  border-radius: 50%;
+  overflow: hidden;
+  color: var(--vf-ink);
+  font: 500 0.95rem/1.2 var(--font-sans);
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+.vf-magnet-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--vf-gold);
+  transform: translateY(101%);
+  transition: transform 450ms var(--vf-ease);
+}
+.vf-magnet-label {
+  position: relative;
+  transition: color 300ms ease;
+}
+.vf-magnet-label svg {
+  display: inline-block;
+  width: 1.05rem;
+  height: 1.05rem;
+  vertical-align: -0.15em;
+  transition: transform 300ms var(--vf-ease);
+}
+.vf-magnet:hover .vf-magnet-fill,
+.vf-magnet:focus-visible .vf-magnet-fill {
+  transform: translateY(0);
+}
+.vf-magnet:hover .vf-magnet-label,
+.vf-magnet:focus-visible .vf-magnet-label {
+  color: #05070c;
+}
+.vf-magnet:hover .vf-magnet-label svg {
+  transform: translate(2px, -2px);
+}
+.vf-magnet:active .vf-magnet-label {
+  transform: scale(0.96);
+}
+
+/* ---- 2. Voyage map ------------------------------------------------------ */
+
+.vf-map {
+  margin-top: clamp(4rem, 8vw, 6.5rem);
+  padding-block: 1rem;
+  border-block: 1px solid var(--vf-faint);
+}
+.vf-map-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.vf-horizon {
+  stroke: var(--vf-faint);
+  stroke-dasharray: 2 6;
+}
+.vf-route {
+  fill: none;
+  stroke: url(#vf-route-grad);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+.vf-ship {
+  fill: #fff4d6;
+  filter: drop-shadow(0 0 5px rgba(255, 214, 120, 0.95));
+}
+.vf-port {
+  fill: var(--vf-gold);
+}
+.vf-port-ring {
+  fill: none;
+  stroke: rgba(217, 177, 103, 0.4);
+}
+.vf-port-name,
+.vf-origin-name {
+  fill: var(--vf-ink);
+  font: 500 17px var(--font-sans);
+  letter-spacing: -0.02em;
+}
+.vf-origin-name {
+  font: italic 400 26px var(--font-serif);
+  fill: var(--vf-gold);
+}
+.vf-port-year {
+  fill: var(--vf-muted);
+  font: 500 11px var(--font-mono);
+  letter-spacing: 0.12em;
+}
+.vf-origin {
+  fill: var(--vf-gold);
+}
+.vf-origin-pulse {
+  fill: rgba(217, 177, 103, 0.2);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: vf-ripple 2.8s var(--vf-ease) infinite;
+}
+.vf-map-list {
+  display: none;
+}
+
+/* ---- 3. Directory ------------------------------------------------------- */
+
+.vf-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 0.8fr 0.9fr 1.35fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  padding-block: clamp(3.5rem, 6vw, 5rem);
+}
+.vf-heading {
+  margin-bottom: 1.4rem;
+  color: var(--vf-gold);
+  font: 500 var(--text-eyebrow)/1 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.vf-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+.vf-logo img {
+  width: 3.6rem;
+  height: 3.6rem;
+  object-fit: contain;
+}
+.vf-logo span {
+  font: 600 1.05rem/1.05 var(--font-display);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.vf-logo em {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--vf-gold);
+  font: italic 400 1rem/1 var(--font-serif);
+  letter-spacing: 0;
+  text-transform: none;
+}
+.vf-about {
+  margin-top: 1.4rem;
+  max-width: 24rem;
+  color: var(--vf-muted);
+  font: 400 var(--text-small)/1.65 var(--font-sans);
+}
+.vf-social {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1.6rem;
+}
+.vf-social a {
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border: 1px solid var(--vf-faint);
+  border-radius: 50%;
+  color: var(--vf-ink);
+  transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease, transform 160ms ease-out;
+}
+.vf-social a svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+.vf-social a:hover {
+  border-color: var(--vf-gold);
+  background: var(--vf-gold);
+  color: #05070c;
+}
+.vf-social a:active {
+  transform: scale(0.94);
+}
+
+/* Rolling-text links: the label slides up and a gold copy rolls in under it. */
+.vf-links {
+  display: grid;
+  gap: 0.85rem;
+}
+.vf-links a {
+  display: inline-block;
+  overflow: hidden;
+  color: rgba(245, 239, 227, 0.82);
+  font: 400 1rem/1.25 var(--font-sans);
+  letter-spacing: -0.01em;
+}
+.vf-links a span {
+  position: relative;
+  display: inline-block;
+  transition: transform 380ms var(--vf-ease);
+}
+.vf-links a span::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  color: var(--vf-gold);
+  font-style: italic;
+  font-family: var(--font-serif);
+  font-size: 1.12em;
+}
+.vf-links a:hover span,
+.vf-links a:focus-visible span {
+  transform: translateY(-100%);
+}
+
+.vf-contact {
+  font-style: normal;
+}
+.vf-contact-big {
+  display: block;
+  margin-bottom: 1.4rem;
+  font: 500 clamp(1.15rem, 1rem + 0.6vw, 1.5rem) / 1.25 var(--font-display);
+  letter-spacing: -0.025em;
+  overflow-wrap: anywhere;
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  transition: background-size 400ms var(--vf-ease), color 200ms ease;
+}
+.vf-contact-big:hover {
+  color: var(--vf-gold);
+  background-size: 100% 1px;
+}
+.vf-contact-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin-top: 0.8rem;
+  color: var(--vf-muted);
+  font: 400 var(--text-small)/1.55 var(--font-sans);
+  transition: color 200ms ease;
+}
+a.vf-contact-row:hover {
+  color: var(--vf-ink);
+}
+.vf-contact-row svg {
+  flex: 0 0 auto;
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.2rem;
+  color: var(--vf-gold);
+}
+.vf-contact-row small {
+  color: rgba(245, 239, 227, 0.35);
+  font: 500 0.68rem/1 var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  align-self: center;
+}
+
+/* ---- 4. Diaspora clocks ------------------------------------------------- */
+
+.vf-clocks {
+  overflow: hidden;
+  border-block: 1px solid var(--vf-faint);
+  padding-block: 1.1rem;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+.vf-clocks-track {
+  display: flex;
+  width: max-content;
+  animation: vf-clocks 50s linear infinite;
+}
+.vf-clocks:hover .vf-clocks-track {
+  animation-play-state: paused;
+}
+.vf-clocks-set {
+  display: flex;
+}
+.vf-clocks-set li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  padding-right: 2.4rem;
+  white-space: nowrap;
+}
+.vf-clock-city {
+  color: var(--vf-muted);
+  font: 500 0.7rem/1 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.vf-clock-time {
+  color: var(--vf-ink);
+  font: 500 1.35rem/1 var(--font-mono);
+  letter-spacing: -0.02em;
+}
+.vf-clock-sep {
+  margin-left: 1.7rem;
+  color: var(--vf-gold);
+  font-size: 0.7rem;
+}
+
+/* ---- 5. Wordmark -------------------------------------------------------- */
+
+.vf-wordmark {
+  position: relative;
+  margin-top: clamp(2rem, 4vw, 3rem);
+  font: 700 clamp(4rem, 17.4vw, 20rem) / 0.8 var(--font-display);
+  letter-spacing: -0.04em;
+  text-align: center;
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+}
+.vf-wordmark-outline {
+  display: block;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(217, 177, 103, 0.32);
+}
+.vf-wordmark-fill {
+  position: absolute;
+  inset: 0;
+  display: block;
+  background: linear-gradient(180deg, #f2e2c2 0%, #d9b167 45%, #8c6b1a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.vf-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1.6rem 2rem;
+  border-top: 1px solid var(--vf-faint);
+  color: rgba(245, 239, 227, 0.45);
+  font: 400 0.8rem/1 var(--font-sans);
+}
+.vf-bottom-mantra {
+  font: 500 0.66rem/1 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.vf-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--vf-ink);
+  font-weight: 600;
+}
+.vf-top span {
+  display: grid;
+  place-items: center;
+  width: 2.3rem;
+  height: 2.3rem;
+  border: 1px solid var(--vf-faint);
+  border-radius: 50%;
+  transition: transform 300ms var(--vf-ease), background-color 200ms ease, border-color 200ms ease;
+}
+.vf-top span svg {
+  width: 1rem;
+  height: 1rem;
+}
+.vf-top:hover span {
+  transform: translateY(-3px);
+  background: var(--vf-gold);
+  border-color: var(--vf-gold);
+  color: #05070c;
+}
+
+/* ---- Keyframes ---------------------------------------------------------- */
+
+@keyframes vf-pulse {
+  50% { box-shadow: 0 0 0 7px rgba(217, 177, 103, 0); }
+}
+@keyframes vf-ripple {
+  0% { transform: scale(0.6); opacity: 0.9; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+@keyframes vf-clocks {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+/* ---- Responsive --------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .vf-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .vf-statement {
+    font-size: clamp(2.9rem, 15vw, 4.5rem);
+  }
+  .vf-map-svg {
+    display: none;
+  }
+  .vf-map-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.9rem 1.5rem;
+  }
+  .vf-map-list li {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--vf-faint);
+    font: 500 1rem/1 var(--font-sans);
+    letter-spacing: -0.015em;
+  }
+  .vf-map-list li span:last-child {
+    color: var(--vf-gold);
+    font: 500 0.75rem/1 var(--font-mono);
+    letter-spacing: 0.1em;
+  }
+  .vf-grid {
+    grid-template-columns: 1fr;
+  }
+  .vf-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vf *,
+  .vf *::before,
+  .vf *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}

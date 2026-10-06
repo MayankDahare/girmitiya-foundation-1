@@ -1,0 +1,114 @@
+.greetings-message-section { position: relative; overflow: hidden; padding: 4rem 0 3.8rem; background: #f7f1e5; color: #102238; }
+.greetings-message-section::before { content: "\201C"; position: absolute; top: 2rem; left: 3.5%; color: rgba(184,139,63,.12); font: 400 12rem/.8 var(--font-serif); pointer-events: none; }
+.greetings-message-section::after { content: ""; position: absolute; inset: 0; opacity: .34; pointer-events: none; background: repeating-linear-gradient(0deg, rgba(140,104,46,.025) 0 1px, transparent 1px 5px); }
+.greetings-message-inner { position: relative; z-index: 1; width: 100%; max-width: 1540px; margin: 0 auto; }
+.greetings-message-header { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; padding: 0 1.25rem; text-align: center; }
+.greetings-message-eyebrow { display: inline-flex; align-items: center; gap: .8rem; color: #b9873a; font: 500 var(--text-eyebrow)/1 var(--font-mono); letter-spacing: .14em; }
+.greetings-message-eyebrow::before, .greetings-message-eyebrow::after { content: ""; width: 2.7rem; height: 1px; background: #c79a4b; }
+.greetings-message-heading { display: block; margin: 1.1rem 0 1rem; font: 600 var(--text-h2)/1.06 var(--font-display); letter-spacing: -.035em; }
+.greetings-message-heading span { color: #b9873a; font-family: var(--font-serif); font-style: italic; font-weight: 400; font-size: 1.08em; letter-spacing: -.015em; }
+.greetings-message-description { display: block; max-width: 640px; margin: 0 auto; color: #516172; font: 400 var(--text-lead)/1.6 var(--font-sans); letter-spacing: -.005em; }
+.greetings-message-ornament { position: absolute; right: 3%; top: 4rem; color: rgba(174,132,65,.2); font: italic 400 1.4rem/1.3 var(--font-serif); transform: rotate(-8deg); }
+.greetings-message-ornament::after { content: ""; display: block; width: 70px; height: 1px; margin: .6rem auto 0; background: #c79a4b; }
+
+/* ---- Marquee: moves left → right, pauses on hover or keyboard focus ---- */
+.gm-marquee {
+  position: relative;
+  margin-top: 2.5rem;
+  overflow: hidden;
+  padding: 1.25rem 0 1.5rem;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+.gm-track {
+  display: flex;
+  width: max-content;
+  animation: gm-ltr 60s linear infinite;
+  will-change: transform;
+}
+.gm-marquee:hover .gm-track,
+.gm-marquee:focus-within .gm-track,
+.gm-marquee-paused .gm-track { animation-play-state: paused; }
+
+/* Start shifted by one full set and travel right; the duplicate set fills in behind. */
+@keyframes gm-ltr {
+  from { transform: translate3d(-50%, 0, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+
+/* Spacing lives on the card (not flex gap) so both halves are exactly equal. */
+.gm-card {
+  position: relative;
+  flex: 0 0 auto;
+  width: clamp(190px, 19vw, 260px);
+  margin-right: clamp(1rem, 1.6vw, 1.6rem);
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+  transition: transform 320ms cubic-bezier(.23,1,.32,1), opacity 260ms ease;
+}
+.gm-card-frame {
+  display: block;
+  padding: .45rem;
+  border: 1px solid rgba(196,148,65,.5);
+  border-radius: .5rem;
+  background: #fffdf8;
+  box-shadow: 0 10px 20px rgba(83,60,25,.12);
+  transition: box-shadow 320ms ease, border-color 320ms ease;
+}
+.gm-card img { display: block; width: 100%; aspect-ratio: 904 / 1280; object-fit: cover; border-radius: .25rem; background: #fff; }
+.gm-card-label {
+  position: absolute; left: .45rem; right: .45rem; bottom: .45rem;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .6rem .7rem;
+  border-radius: 0 0 .25rem .25rem;
+  background: linear-gradient(to top, rgba(0,0,0,.86), rgba(0,0,0,.55));
+  color: #f2e2c2;
+  font: 500 .66rem/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase;
+  opacity: 0; transform: translateY(6px);
+  transition: opacity 220ms ease, transform 260ms cubic-bezier(.23,1,.32,1);
+}
+.gm-card-label svg { width: .95rem; height: .95rem; color: #d9b167; }
+
+.gm-card:hover, .gm-card:focus-visible { transform: translateY(-8px); }
+.gm-card:hover .gm-card-frame, .gm-card:focus-visible .gm-card-frame { border-color: rgba(187,133,30,.9); box-shadow: 0 22px 36px rgba(83,60,25,.22); }
+.gm-card:hover .gm-card-label, .gm-card:focus-visible .gm-card-label { opacity: 1; transform: none; }
+.gm-card:active { transform: translateY(-8px) scale(.98); }
+@media (hover: hover) {
+  .gm-track:hover .gm-card:not(:hover) { opacity: .55; }
+}
+
+.gm-hint { margin: .25rem 0 1.25rem; text-align: center; color: rgba(81,97,114,.75); font: 500 .68rem/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; }
+
+.greetings-message-view-all { display: inline-flex; align-items: center; gap: .55rem; padding: .72rem 1.8rem; border: 1px solid #c99943; border-radius: .35rem; background: transparent; color: #213247; font: 600 .9rem/1 var(--font-sans); transition: background-color 200ms ease, color 200ms ease, transform 160ms ease-out; }
+.greetings-message-view-all:hover { background: #0a101d; border-color: #0a101d; color: #f2e2c2; }
+.greetings-message-view-all:active { transform: scale(.97); }
+.greetings-message-view-all svg { color: #c68c1b; }
+
+.greetings-message-lightbox { position: fixed; inset: 0; z-index: 70; display: grid; place-items: center; padding: 2rem; background: rgba(0,0,0,.86); backdrop-filter: blur(6px); }
+.greetings-message-lightbox-panel { position: relative; display: flex; align-items: center; gap: 1rem; width: min(860px, 100%); height: min(90vh, 780px); }
+.greetings-message-lightbox-document { display: block; width: min(560px, calc(100% - 5rem)); height: 100%; margin: auto; object-fit: contain; border: .5rem solid #fffdf8; background: #fff; box-shadow: 0 25px 60px rgba(0,0,0,.35); }
+.greetings-message-lightbox-close { position: absolute; top: -1.7rem; right: 0; display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border: 1px solid rgba(255,255,255,.4); border-radius: 50%; background: transparent; color: #fff; }
+.greetings-message-lightbox-arrow { display: grid; place-items: center; width: 2.5rem; height: 2.5rem; flex: 0 0 auto; border: 1px solid rgba(255,255,255,.5); border-radius: 50%; background: rgba(198,140,27,.9); color: #fff; transition: transform 160ms ease-out; }
+.greetings-message-lightbox-arrow:active { transform: scale(.94); }
+.greetings-message-lightbox-counter { position: absolute; bottom: -1.8rem; left: 50%; color: #f9f0de; font: 500 .75rem/1 var(--font-mono); letter-spacing: .14em; transform: translateX(-50%); }
+
+@media (max-width: 640px) {
+  .greetings-message-section { padding: 3.2rem 0 3rem; }
+  .greetings-message-ornament { display: none; }
+  .gm-marquee { margin-top: 1.5rem; }
+  .gm-track { animation-duration: 45s; }
+  .greetings-message-lightbox { padding: 1rem; }
+  .greetings-message-lightbox-panel { height: 82vh; }
+  .greetings-message-lightbox-document { width: calc(100% - 3rem); }
+  .greetings-message-lightbox-arrow { width: 2.1rem; height: 2.1rem; }
+  .greetings-message-lightbox-close { top: -2.5rem; right: 0; }
+}
+
+/* Reduced motion: no drift, the row becomes a normal horizontal scroller. */
+@media (prefers-reduced-motion: reduce) {
+  .gm-track { animation: none; padding-inline: 1.25rem; }
+  .gm-marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+  .greetings-message-section * { transition-duration: .01ms !important; }
+}

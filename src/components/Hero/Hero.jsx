@@ -79,7 +79,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen flex-col justify-between overflow-hidden bg-[#FAF7F2] lg:h-screen lg:max-h-screen"
+      className="relative flex min-h-screen flex-col justify-between overflow-hidden bg-[#0A101D]"
     >
       {/* Full-screen Background Awwwards Image Slider (5-second auto change, Ken Burns zoom) */}
       <div className="absolute inset-0 z-0 overflow-hidden select-none">
@@ -103,9 +103,10 @@ export default function Hero() {
           </motion.div>
         </AnimatePresence>
 
-        {/* Luxury Dual Gradient Overlays for High Contrast & Crystal-Clear Text Legibility */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF7F2]/95 via-[#FAF7F2]/80 to-[#FAF7F2]/30 z-1" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A101D]/40 via-transparent to-[#FAF7F2]/50 z-1" />
+        {/* Dark scrims: directional for the text column, vertical to seat the nav and the wave */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/20 z-1" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A101D]/70 via-transparent to-black/45 z-1" />
+        <div className="absolute inset-0 z-1 bg-[radial-gradient(ellipse_at_20%_50%,transparent_0%,rgba(0,0,0,0.35)_100%)]" />
       </div>
 
       {/* Far Left Section Index & Active Animated Dots */}
@@ -115,18 +116,18 @@ export default function Hero() {
         transition={{ duration: 0.8, delay: 0.3, ease: easeTransition }}
         onMouseEnter={() => setIndexHovered(true)}
         onMouseLeave={() => setIndexHovered(false)}
-        className="group absolute left-4 sm:left-6 lg:left-8 top-[36%] hidden -translate-y-1/2 flex-col items-center gap-3 text-[#B9873A] md:flex z-20 select-none cursor-default"
+        className="group absolute left-4 sm:left-6 lg:left-8 top-[36%] hidden -translate-y-1/2 flex-col items-center gap-3 text-[#D9B167] md:flex z-20 select-none cursor-default"
       >
         {/* Number '01' with Micro-interactions */}
         <motion.div
           animate={{
             scale: indexHovered ? 1.2 : [1, 1.06, 1],
-            color: indexHovered ? "#9A6B1A" : "#B9873A",
+            color: indexHovered ? "#F2E2C2" : "#D9B167",
           }}
           transition={{
             scale: indexHovered ? { duration: 0.25 } : { duration: 3, repeat: Infinity, ease: "easeInOut" },
           }}
-          className="relative flex items-center justify-center font-display text-xs sm:text-sm font-bold tracking-widest"
+          className="relative flex items-center justify-center font-mono text-xs font-medium tracking-[0.14em]"
         >
           {/* Ambient Glow Aura on Hover */}
           <motion.span
@@ -216,15 +217,15 @@ export default function Hero() {
                 animate="show"
                 custom={0}
                 variants={fadeUp}
-                className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold tracking-[0.2em] text-[#B9873A] uppercase font-sans select-text"
+                className="t-eyebrow inline-flex items-center gap-2.5 text-[#D9B167] select-text"
               >
-                <span className="h-px w-5 bg-[#B9873A]/60" />
+                <span className="h-px w-5 bg-[#D9B167]/70" />
                 PRESERVING HERITAGE. EMPOWERING FUTURES.
               </motion.p>
             </div>
 
             {/* Main Headline with Masked Staggered Line Reveal (100% Selectable Text) */}
-            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[2.85rem] xl:text-[3.4rem] font-bold leading-[1.12] text-[#18181B] select-text">
+            <h1 className="t-display text-[#FAF7F2] select-text" style={{ fontSize: "min(var(--text-display), 8.6svh)" }}>
               <span className="block overflow-hidden pb-1">
                 <motion.span
                   custom={0}
@@ -253,7 +254,7 @@ export default function Hero() {
                   variants={lineVariants}
                   initial="hidden"
                   animate="show"
-                  className="block text-[#C59B27] drop-shadow-sm"
+                  className="t-accent block pr-2 bg-gradient-to-r from-[#F2E2C2] via-[#E5B869] to-[#C59B27] bg-clip-text text-transparent"
                 >
                   With Their Roots
                 </motion.span>
@@ -266,7 +267,7 @@ export default function Hero() {
               animate="show"
               custom={1}
               variants={fadeUp}
-              className="mt-3 sm:mt-4 max-w-lg text-sm sm:text-[15px] leading-relaxed text-[#4B5563] select-text"
+              className="t-lead mt-5 max-w-[36rem] text-white/72 select-text"
             >
               A socio-cultural and educational skill development trust improving lives
               through education, women empowerment, skill training and cultural
@@ -279,7 +280,7 @@ export default function Hero() {
               animate="show"
               custom={2}
               variants={fadeUp}
-              className="mt-5 sm:mt-6 flex flex-wrap items-center gap-3.5"
+              className="mt-7 flex flex-wrap items-center gap-3.5"
             >
               {/* Primary Button */}
               <motion.a
@@ -287,7 +288,7 @@ export default function Hero() {
                 whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-md bg-[#C59B27] px-5 py-2.5 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold text-white shadow-md shadow-[#C59B27]/20 transition-all duration-200 hover:bg-[#B58B20] hover:shadow-lg hover:shadow-[#C59B27]/30 cursor-pointer"
+                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-md bg-[#C59B27] px-5 py-2.5 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold text-[#0A101D] shadow-md shadow-[#C59B27]/20 transition-[background-color,box-shadow] duration-200 hover:bg-[#B58B20] hover:shadow-lg hover:shadow-[#C59B27]/30 cursor-pointer"
               >
                 <span>Explore Our Work</span>
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 ease-out group-hover:translate-x-1.5" />
@@ -299,7 +300,7 @@ export default function Hero() {
                 whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                className="group inline-flex items-center gap-2 rounded-md border border-[#18181B]/40 bg-white/80 px-5 py-2.5 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold text-[#18181B] shadow-sm backdrop-blur-sm transition-all duration-200 hover:bg-white hover:border-[#18181B] hover:shadow-md cursor-pointer"
+                className="group inline-flex items-center gap-2 rounded-md border border-white/30 bg-white/5 px-5 py-2.5 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold text-[#FAF7F2] backdrop-blur-md transition-[background-color,border-color] duration-200 hover:bg-white/10 hover:border-white/60 cursor-pointer"
               >
                 <span>Reconnect Your Roots</span>
                 <Leaf className="h-4 w-4 text-[#C59B27] transition-transform duration-300 ease-out group-hover:rotate-12 group-hover:scale-110" />
@@ -352,7 +353,7 @@ export default function Hero() {
                   className="h-1 w-1 rounded-full bg-[#C59B27]"
                 />
               </span>
-              <span className="text-[10px] sm:text-[11px] font-semibold tracking-widest text-[#E5D8B8] transition-colors group-hover:text-white">
+              <span className="t-eyebrow text-[#E5D8B8] transition-colors group-hover:text-white">
                 SCROLL TO EXPLORE
               </span>
             </motion.div>
@@ -373,10 +374,10 @@ export default function Hero() {
                       strokeWidth={1.5}
                     />
                   </div>
-                  <span className="font-display text-sm sm:text-base font-semibold text-white tracking-wide transition-colors duration-200 group-hover:text-[#E5B869]">
+                  <span className="text-[15px] sm:text-base font-semibold tracking-[-0.01em] text-white transition-colors duration-200 group-hover:text-[#E5B869]">
                     {title}
                   </span>
-                  <span className="mt-0.5 text-[11px] sm:text-xs text-white/80 transition-colors duration-200 group-hover:text-white">
+                  <span className="mt-1 text-xs sm:text-[13px] text-white/60 transition-colors duration-200 group-hover:text-white/85">
                     {subtitle}
                   </span>
                 </motion.div>
