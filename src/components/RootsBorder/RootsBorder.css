@@ -59,13 +59,14 @@
 
 /* Thin on small screens so the roots frame content instead of covering it. */
 @media (max-width: 767px) {
+  /* Phones: a fine filigree at the very edge so it frames, never crosses, text. */
   .roots-border__side {
-    width: 64px;
+    width: 40px;
   }
   .roots-border__svg {
     transform-origin: 0 0;
-    scale: 0.55 1;
-    opacity: 0.7;
+    scale: 0.34 1;
+    opacity: 0.5;
   }
 }
 

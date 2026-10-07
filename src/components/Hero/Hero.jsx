@@ -36,7 +36,6 @@ const pillars = [
 
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
-  const [indexHovered, setIndexHovered] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   // 5-second automatic slide rotation
@@ -109,121 +108,11 @@ export default function Hero() {
         <div className="absolute inset-0 z-1 bg-[radial-gradient(ellipse_at_20%_50%,transparent_0%,rgba(0,0,0,0.35)_100%)]" />
       </div>
 
-      {/* Far Left Section Index & Active Animated Dots */}
-      <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 0.3, ease: easeTransition }}
-        onMouseEnter={() => setIndexHovered(true)}
-        onMouseLeave={() => setIndexHovered(false)}
-        className="group absolute left-4 sm:left-6 lg:left-8 top-[36%] hidden -translate-y-1/2 flex-col items-center gap-3 text-[#D9B167] md:flex z-20 select-none cursor-default"
-      >
-        {/* Number '01' with Micro-interactions */}
-        <motion.div
-          animate={{
-            scale: indexHovered ? 1.2 : [1, 1.06, 1],
-            color: indexHovered ? "#F2E2C2" : "#D9B167",
-          }}
-          transition={{
-            scale: indexHovered ? { duration: 0.25 } : { duration: 3, repeat: Infinity, ease: "easeInOut" },
-          }}
-          className="relative flex items-center justify-center font-mono text-xs font-medium tracking-[0.14em]"
-        >
-          {/* Ambient Glow Aura on Hover */}
-          <motion.span
-            animate={{
-              opacity: indexHovered ? 0.6 : 0,
-              scale: indexHovered ? 1.6 : 1,
-            }}
-            transition={{ duration: 0.3 }}
-            className="absolute -inset-2 rounded-full bg-[#C59B27]/30 blur-md pointer-events-none"
-          />
-          <span className="relative drop-shadow-xs">01</span>
-        </motion.div>
-
-        {/* Vertical Connecting Guide Line on Hover */}
-        <motion.div
-          animate={{
-            height: indexHovered ? 12 : 6,
-            opacity: indexHovered ? 0.8 : 0.35,
-          }}
-          transition={{ duration: 0.3 }}
-          className="w-px bg-gradient-to-b from-[#B9873A] to-transparent rounded-full"
-        />
-
-        {/* 3 Active Animated Dots with Wave Ripple Animation & Hover Interaction */}
-        <div className="flex flex-col items-center gap-2.5 relative">
-          {[0, 1, 2].map((dotIndex) => (
-            <motion.span
-              key={dotIndex}
-              animate={{
-                scale: indexHovered
-                  ? [1, 1.8, 1]
-                  : shouldReduceMotion
-                  ? 1
-                  : [1, 1.45, 1],
-                opacity: indexHovered
-                  ? [0.7, 1, 0.7]
-                  : shouldReduceMotion
-                  ? 0.6
-                  : [0.4, 0.95, 0.4],
-                boxShadow: indexHovered
-                  ? [
-                      "0 0 0px rgba(197,155,39,0)",
-                      "0 0 10px rgba(197,155,39,0.9)",
-                      "0 0 0px rgba(197,155,39,0)",
-                    ]
-                  : "0 0 4px rgba(197,155,39,0.3)",
-              }}
-              transition={{
-                duration: indexHovered ? 0.8 : 2,
-                repeat: Infinity,
-                delay: dotIndex * (indexHovered ? 0.18 : 0.35),
-                ease: "easeInOut",
-              }}
-              className="h-1.5 w-1.5 rounded-full bg-[#B9873A] transition-colors"
-            />
-          ))}
-        </div>
-
-        {/* Floating Tooltip Reveal on Hover */}
-        <motion.div
-          initial={{ opacity: 0, x: -10, pointerEvents: "none" }}
-          animate={{
-            opacity: indexHovered ? 1 : 0,
-            x: indexHovered ? 0 : -10,
-          }}
-          transition={{ duration: 0.25, ease: easeTransition }}
-          className="absolute left-9 sm:left-11 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-lg bg-[#0A101D] px-3 py-1.5 text-[11px] font-semibold text-[#FAF6F0] shadow-xl border border-[#C59B27]/40 pointer-events-none z-30"
-        >
-          <div className="flex items-center gap-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#C59B27] animate-ping" />
-            <span className="text-[#C59B27] font-bold">01</span>
-            <span className="text-white/40">•</span>
-            <span>Welcome & Heritage</span>
-          </div>
-        </motion.div>
-      </motion.div>
-
       {/* Main Content Area — vertically centered to fit in 100vh */}
-      <div className="content-container relative flex flex-1 items-center pt-14 sm:pt-18 md:pt-20 pb-1 z-10">
+      <div className="content-container relative flex flex-1 items-center pt-28 pb-10 sm:pt-28 md:pt-32 lg:pb-4 z-10">
         <div className="grid w-full grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
           {/* Left Text & Call to Action Column */}
           <div className="lg:col-span-7 xl:col-span-6">
-            {/* Eyebrow Tagline */}
-            <div className="overflow-hidden mb-2 sm:mb-3 pt-2 sm:pt-3 md:pt-4">
-              <motion.p
-                initial="hidden"
-                animate="show"
-                custom={0}
-                variants={fadeUp}
-                className="t-eyebrow inline-flex items-center gap-2.5 text-[#D9B167] select-text"
-              >
-                <span className="h-px w-5 bg-[#D9B167]/70" />
-                PRESERVING HERITAGE. EMPOWERING FUTURES.
-              </motion.p>
-            </div>
-
             {/* Main Headline with Masked Staggered Line Reveal (100% Selectable Text) */}
             <h1 className="t-display text-[#FAF7F2] select-text" style={{ fontSize: "min(var(--text-display), 8.6svh)" }}>
               <span className="block overflow-hidden pb-1">
@@ -267,11 +156,9 @@ export default function Hero() {
               animate="show"
               custom={1}
               variants={fadeUp}
-              className="t-lead mt-5 max-w-[36rem] text-white/72 select-text"
+              className="t-lead mt-5 max-w-[30rem] text-white/75 select-text"
             >
-              A socio-cultural and educational skill development trust improving lives
-              through education, women empowerment, skill training and cultural
-              enrichment for marginalized and underprivileged communities.
+              Helping the Girmitiya diaspora find their ancestral villages in India.
             </motion.p>
 
             {/* Action Buttons with Micro-interactions */}
@@ -280,7 +167,7 @@ export default function Hero() {
               animate="show"
               custom={2}
               variants={fadeUp}
-              className="mt-7 flex flex-wrap items-center gap-3.5"
+              className="mt-8 flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3"
             >
               {/* Primary Button */}
               <motion.a
@@ -288,7 +175,7 @@ export default function Hero() {
                 whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-md bg-[#C59B27] px-5 py-2.5 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold text-[#0A101D] shadow-md shadow-[#C59B27]/20 transition-[background-color,box-shadow] duration-200 hover:bg-[#B58B20] hover:shadow-lg hover:shadow-[#C59B27]/30 cursor-pointer"
+                className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-md bg-[#C59B27] px-6 py-3.5 sm:py-3 text-[15px] sm:text-base font-semibold text-[#0A101D] shadow-md shadow-[#C59B27]/20 transition-[background-color,box-shadow] duration-200 hover:bg-[#B58B20] hover:shadow-lg hover:shadow-[#C59B27]/30 cursor-pointer"
               >
                 <span>Explore Our Work</span>
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 ease-out group-hover:translate-x-1.5" />
@@ -300,7 +187,7 @@ export default function Hero() {
                 whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                className="group inline-flex items-center gap-2 rounded-md border border-white/30 bg-white/5 px-5 py-2.5 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold text-[#FAF7F2] backdrop-blur-md transition-[background-color,border-color] duration-200 hover:bg-white/10 hover:border-white/60 cursor-pointer"
+                className="group inline-flex items-center justify-center gap-2 rounded-md border border-white/30 bg-white/5 px-6 py-3.5 sm:py-3 text-[15px] sm:text-base font-semibold text-[#FAF7F2] backdrop-blur-md transition-[background-color,border-color] duration-200 hover:bg-white/10 hover:border-white/60 cursor-pointer"
               >
                 <span>Reconnect Your Roots</span>
                 <Leaf className="h-4 w-4 text-[#C59B27] transition-transform duration-300 ease-out group-hover:rotate-12 group-hover:scale-110" />
@@ -338,28 +225,11 @@ export default function Hero() {
         </div>
 
         {/* Dark Bottom Area — Comfortably centered with ample breathing room above & below */}
-        <div className="relative overflow-hidden bg-[#0A101D] -mt-[1px] pb-7 sm:pb-9 pt-1 text-[#FAF6F0]">
+        <div className="relative overflow-hidden bg-[#0A101D] -mt-[1px] pb-8 sm:pb-9 pt-2 text-[#FAF6F0]">
           {/* Pillars & Scroll to Explore Container — Clean, Spacious & Balanced */}
-          <div className="content-container relative flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-8 z-10">
-            {/* Scroll To Explore */}
-            <motion.div
-              whileHover={{ y: 2 }}
-              className="flex items-center gap-2.5 text-[#FAF6F0]/80 shrink-0 cursor-default group"
-            >
-              <span className="flex h-6 w-3.5 items-center justify-center rounded-full border border-[#C59B27]/70 transition-colors group-hover:border-[#C59B27] group-hover:shadow-[0_0_8px_rgba(197,155,39,0.5)]">
-                <motion.span
-                  animate={{ y: shouldReduceMotion ? 0 : [0, 4, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                  className="h-1 w-1 rounded-full bg-[#C59B27]"
-                />
-              </span>
-              <span className="t-eyebrow text-[#E5D8B8] transition-colors group-hover:text-white">
-                SCROLL TO EXPLORE
-              </span>
-            </motion.div>
-
+          <div className="content-container relative z-10">
             {/* 4 Pillars — Balanced spacing, prominent icons, clear text */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-0 divide-y sm:divide-y-0 sm:divide-x divide-white/10 w-full sm:w-auto sm:flex-1 sm:max-w-4xl lg:max-w-5xl relative z-10">
+            <div className="mx-auto grid max-w-5xl grid-cols-2 gap-y-6 sm:grid-cols-4 sm:gap-0 sm:divide-x divide-white/10 relative z-10">
               {pillars.map(({ icon: Icon, title, subtitle }) => (
                 <motion.div
                   key={title}

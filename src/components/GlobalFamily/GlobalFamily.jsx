@@ -134,6 +134,7 @@ export default function GlobalFamily() {
         @keyframes gf-marker-pulse { 0%, 58%, 100% { opacity: .35; transform: scale(1); } 26% { opacity: .9; transform: scale(1.22); } }
         @media (max-width: 1024px) { .gf-inner { padding-left: 3.5rem; padding-right: 2.5rem; grid-template-columns: .8fr 1.2fr; }.gf-heading { font-size: 3.7rem; }.gf-globe-stage { min-height: 540px; } }
         @media (max-width: 760px) { .gf-section, .gf-inner { min-height: 0; }.gf-inner { display: block; padding: 5rem 1.35rem 3rem; }.gf-copy { max-width: none; }.gf-heading { margin-top: 2rem; }.gf-support { max-width: 28rem; }.gf-journey { margin-left: 0; }.gf-globe-stage { min-height: 520px; margin-top: 2rem; transform: none; }.gf-globe { top: 8%; left: 3%; width: 96%; }.gf-globe-halo { top: 10%; left: 3%; width: 94%; }.gf-globe-caption { right: 1%; top: 43%; font-size: 1.25rem; }.gf-stamp { right: 0; width: 86px; height: 86px; font-size: .48rem; }.gf-photo-main { left: 1%; bottom: 1%; width: 145px; height: 132px; }.gf-photo-main img { height: 95px; }.gf-photo-small { left: 26%; bottom: 0; width: 125px; height: 118px; }.gf-photo-small img { height: 80px; } }
+        @media (max-width: 760px) { .gf-stamp, .gf-globe-caption { display: none; } }
         @media (prefers-reduced-motion: reduce) { .gf-section * { animation: none !important; transition: none !important; } }
       `}</style>
       <div className="gf-inner">

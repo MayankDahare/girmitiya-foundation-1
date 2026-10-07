@@ -341,7 +341,7 @@ export default function Intro() {
               </p>
 
               {/* 4 Trust Metrics / Badges in 4 Columns */}
-              <div className="mt-5 grid w-full grid-cols-4 gap-1.5 sm:gap-2 border-t border-b border-[#E7DECD] py-3 text-center">
+              <div className="mt-5 grid w-full grid-cols-2 gap-y-4 gap-x-2 sm:grid-cols-4 sm:gap-2 border-t border-b border-[#E7DECD] py-4 sm:py-3 text-center">
                 {stats.map((stat) => {
                   const StatIcon = stat.icon;
                   return (

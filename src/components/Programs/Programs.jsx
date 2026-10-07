@@ -455,12 +455,15 @@ export default function Programs() {
           </p>
         </motion.div>
 
-        {/* 6 Initiative Cards Grid */}
-        <div className="mt-14 sm:mt-16 grid grid-cols-1 gap-y-12 sm:gap-y-14 gap-x-6 sm:grid-cols-2 lg:grid-cols-3">
+        {/* 6 Initiative Cards — a swipeable row on phones, a grid from sm up */}
+        <div className="mt-10 -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-5 px-5 pt-9 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden max-sm:[&>*]:w-[82%] max-sm:[&>*]:shrink-0 max-sm:[&>*]:snap-center sm:mx-0 sm:mt-16 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-14 sm:overflow-visible sm:px-0 sm:pt-0 sm:pb-0 lg:grid-cols-3">
           {programs.map((program, index) => (
             <ProgramCardItem key={program.id} index={index} {...program} />
           ))}
         </div>
+        <p className="t-eyebrow mt-2 text-center text-[#6B7280] sm:hidden" aria-hidden="true">
+          Swipe to see all {programs.length} →
+        </p>
       </div>
     </section>
   );

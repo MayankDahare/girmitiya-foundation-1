@@ -84,7 +84,7 @@ export default function Gallery() {
           </div>
         </div>
 
-        <p className="gm-hint" aria-hidden="true">Hover to pause &nbsp;·&nbsp; Click a letter to read it</p>
+        <p className="gm-hint" aria-hidden="true"><span className="gm-hint-pointer">Hover to pause &nbsp;·&nbsp; Click a letter to read it</span><span className="gm-hint-touch">Tap a letter to read it</span></p>
 
         <div className="text-center">
           <a

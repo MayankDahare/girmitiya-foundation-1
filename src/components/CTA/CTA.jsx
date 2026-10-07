@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Heart } from "lucide-react";
-import handsImage from "../../assets/images/cta-hands.svg";
+import ctaPhoto from "../../assets/moments/children-books.webp";
 
 export default function CTA() {
   return (
@@ -11,9 +11,9 @@ export default function CTA() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          src={handsImage}
-          alt="Hands joined together in unity"
-          className="h-20 w-20 shrink-0 rounded-full object-cover md:h-24 md:w-24"
+          src={ctaPhoto}
+          alt="Children holding books at a Girmitiya Foundation education drive"
+          className="h-20 w-20 shrink-0 rounded-full object-cover ring-2 ring-gold-500/60 ring-offset-4 ring-offset-navy-950 md:h-24 md:w-24"
         />
 
         <motion.div
@@ -36,12 +36,12 @@ export default function CTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex flex-wrap gap-4"
+          className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4"
         >
-          <a href="#donate" className="btn-gold">
+          <a href="#donate" className="btn-gold justify-center">
             Support Our Work <Heart className="h-4 w-4" />
           </a>
-          <a href="#chapter" className="btn-outline">
+          <a href="#chapter" className="btn-outline justify-center">
             Reconnect to Your Roots <ArrowRight className="h-4 w-4" />
           </a>
         </motion.div>

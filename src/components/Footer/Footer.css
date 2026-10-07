@@ -527,7 +527,15 @@ a.vf-contact-row:hover {
     letter-spacing: 0.1em;
   }
   .vf-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem 1.5rem;
+  }
+  .vf-brand,
+  .vf-contact {
+    grid-column: 1 / -1;
+  }
+  .vf-links a {
+    font-size: 0.95rem;
   }
   .vf-bottom {
     flex-direction: column;

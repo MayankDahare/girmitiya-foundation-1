@@ -368,7 +368,7 @@ export default function Impact() {
         </motion.div>
 
         {/* 4 Impact Metric Cards */}
-        <div className="mt-12 sm:mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto">
+        <div className="mt-10 sm:mt-14 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4 max-w-5xl mx-auto">
           {impactStats.map((stat, i) => {
             const Icon = stat.icon;
             const isHovered = hoveredCard === i;
@@ -383,7 +383,7 @@ export default function Impact() {
                 onMouseEnter={() => setHoveredCard(i)}
                 onMouseLeave={() => setHoveredCard(null)}
                 whileHover={{ y: -6, scale: 1.02 }}
-                className={`group relative flex flex-col items-center justify-between rounded-2xl bg-white p-6 sm:p-7 border transition-all duration-300 ${
+                className={`group relative flex flex-col items-center justify-between rounded-2xl bg-white px-3 py-5 sm:p-7 border transition-[border-color,box-shadow] duration-300 ${
                   isHovered
                     ? "border-[#C59B27] shadow-[0_16px_40px_rgba(197,155,39,0.18)]"
                     : "border-[#EADFCB]/60 shadow-[0_10px_30px_rgba(20,27,45,0.04)] hover:border-[#C59B27]/50"
@@ -397,19 +397,19 @@ export default function Impact() {
                       rotate: isHovered ? [0, 6, -6, 0] : 0,
                     }}
                     transition={{ duration: 0.5 }}
-                    className={`h-14 w-14 sm:h-15 sm:w-15 rounded-[42%_58%_70%_30%/45%_45%_55%_55%] ${stat.blobBg} flex items-center justify-center shadow-xs`}
+                    className={`h-11 w-11 sm:h-15 sm:w-15 rounded-[42%_58%_70%_30%/45%_45%_55%_55%] ${stat.blobBg} flex items-center justify-center shadow-xs`}
                   >
                     <Icon className={`h-6 w-6 sm:h-6.5 sm:w-6.5 ${stat.iconColor}`} strokeWidth={1.75} />
                   </motion.div>
                 </div>
 
                 {/* Metric Number with Live Counter Animation */}
-                <div className="t-stat mt-2 text-4xl sm:text-5xl text-[#18181B]">
+                <div className="t-stat mt-2 text-[2rem] sm:text-5xl text-[#18181B]">
                   <Counter value={stat.value} suffix={stat.suffix} />
                 </div>
 
                 {/* Metric Label */}
-                <p className="t-small mt-2 font-medium text-[#4B5563] max-w-[180px]">
+                <p className="mt-2 text-[13px] leading-snug sm:text-sm font-medium text-[#4B5563] max-w-[180px]">
                   {stat.label}
                 </p>
 

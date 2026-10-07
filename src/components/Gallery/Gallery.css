@@ -106,6 +106,9 @@
   .greetings-message-lightbox-close { top: -2.5rem; right: 0; }
 }
 
+.gm-hint-touch { display: none; }
+@media (hover: none) { .gm-hint-pointer { display: none; } .gm-hint-touch { display: inline; } }
+
 /* Reduced motion: no drift, the row becomes a normal horizontal scroller. */
 @media (prefers-reduced-motion: reduce) {
   .gm-track { animation: none; padding-inline: 1.25rem; }
