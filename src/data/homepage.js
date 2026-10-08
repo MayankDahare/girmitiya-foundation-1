@@ -10,15 +10,17 @@ import {
   Landmark,
   Compass,
 } from "lucide-react";
+import { aboutPages } from "./about";
+import { workPages } from "./work";
 
 export const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About Us", href: "#about", hasDropdown: true },
-  { label: "Our Work", href: "#programs", hasDropdown: true },
-  { label: "Girmitiya Chapter", href: "#chapter", hasDropdown: true },
-  { label: "Media", href: "#media", hasDropdown: true },
-  { label: "Blog", href: "#blog" },
-  { label: "Contact Us", href: "#contact" },
+  { label: "Home", href: "/#home" },
+  { label: "About Us", href: "/#about", children: aboutPages },
+  { label: "Our Work", href: "/#programs", children: workPages },
+  { label: "Girmitiya Chapter", href: "/#chapter", hasDropdown: true },
+  { label: "Media", href: "/#media", hasDropdown: true },
+  { label: "Blog", href: "/#blog" },
+  { label: "Contact Us", href: "/#contact" },
 ];
 
 export const heroPillars = [
@@ -51,14 +53,15 @@ export const globalMarkers = [
 ];
 
 export const footerQuickLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About Us", href: "#about" },
-  { label: "Our Work", href: "#programs" },
-  { label: "Girmitiya Chapter", href: "#chapter" },
-  { label: "Media", href: "#media" },
-  { label: "Blog", href: "#blog" },
-  { label: "Contact Us", href: "#contact" },
-  { label: "Donate Now", href: "#donate" },
+  { label: "Home", href: "/#home" },
+  { label: "About Us", href: "/#about" },
+  ...aboutPages.map(({ label, href }) => ({ label, href })),
+  { label: "Our Work", href: "/#programs" },
+  { label: "Girmitiya Chapter", href: "/#chapter" },
+  { label: "Media", href: "/#media" },
+  { label: "Blog", href: "/#blog" },
+  { label: "Contact Us", href: "/#contact" },
+  { label: "Donate Now", href: "/#donate" },
 ];
 
 export const footerPolicyLinks = [

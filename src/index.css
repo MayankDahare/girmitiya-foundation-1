@@ -316,3 +316,33 @@
     background-color: rgba(197, 155, 39, 0.75);
   }
 }
+
+/* ---- About pages ------------------------------------------------------ */
+
+@layer utilities {
+  /* Horizontal gallery track lines up with .content-container's left edge. */
+  @media (min-width: 1024px) {
+    .about-track-pad {
+      padding-left: max(2.5rem, calc((100vw - var(--container-content)) / 2 + 2.5rem));
+    }
+  }
+
+  .about-marquee-track {
+    animation: about-marquee 48s linear infinite;
+  }
+  .about-marquee-reverse {
+    animation-direction: reverse;
+  }
+  .about-marquee:hover .about-marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes about-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
+}

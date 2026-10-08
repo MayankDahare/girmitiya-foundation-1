@@ -179,7 +179,7 @@ export default function Footer() {
             Between 1834 and 1920, over a million Indians crossed the oceans under indenture.
             We help their descendants trace the villages, birth places and families they left behind.
           </p>
-          <MagneticLink href="#chapter" reduceMotion={reduceMotion}>
+          <MagneticLink href="/#chapter" reduceMotion={reduceMotion}>
             Begin your<br />search <ArrowUpRight aria-hidden="true" />
           </MagneticLink>
         </div>
@@ -216,7 +216,7 @@ export default function Footer() {
       {/* 3. Directory */}
       <div className="vf-inner vf-grid">
         <div className="vf-col vf-brand">
-          <a href="#home" className="vf-logo">
+          <a href="/#home" className="vf-logo">
             <img src={logo} alt="Girmitiya Foundation logo" />
             <span>Girmitiya<br />Foundation<em>Reconnect to your roots</em></span>
           </a>

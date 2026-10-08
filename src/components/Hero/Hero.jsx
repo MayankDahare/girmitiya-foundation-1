@@ -102,19 +102,23 @@ export default function Hero() {
           </motion.div>
         </AnimatePresence>
 
-        {/* Dark scrims: directional for the text column, vertical to seat the nav and the wave */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/20 z-1" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A101D]/70 via-transparent to-black/45 z-1" />
-        <div className="absolute inset-0 z-1 bg-[radial-gradient(ellipse_at_20%_50%,transparent_0%,rgba(0,0,0,0.35)_100%)]" />
+        {/* Light top band so the nav stays legible; the rest of the image is left bright */}
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/40 to-transparent z-1" />
       </div>
 
       {/* Main Content Area — vertically centered to fit in 100vh */}
       <div className="content-container relative flex flex-1 items-center pt-28 pb-10 sm:pt-28 md:pt-32 lg:pb-4 z-10">
         <div className="grid w-full grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
           {/* Left Text & Call to Action Column */}
-          <div className="lg:col-span-7 xl:col-span-6">
+          <div className="relative lg:col-span-7 xl:col-span-6">
+            {/* Soft shadow limited to the text block */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -inset-x-10 -inset-y-12 -z-10 rounded-[50%] bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.6)_0%,rgba(0,0,0,0.35)_45%,transparent_72%)] blur-2xl"
+            />
+
             {/* Main Headline with Masked Staggered Line Reveal (100% Selectable Text) */}
-            <h1 className="t-display text-[#FAF7F2] select-text" style={{ fontSize: "min(var(--text-display), 8.6svh)" }}>
+            <h1 className="t-display text-[#FAF7F2] select-text drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]" style={{ fontSize: "min(var(--text-display), 8.6svh)" }}>
               <span className="block overflow-hidden pb-1">
                 <motion.span
                   custom={0}
@@ -156,7 +160,7 @@ export default function Hero() {
               animate="show"
               custom={1}
               variants={fadeUp}
-              className="t-lead mt-5 max-w-[30rem] text-white/75 select-text"
+              className="t-lead mt-5 max-w-[30rem] text-white/85 select-text drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)]"
             >
               Helping the Girmitiya diaspora find their ancestral villages in India.
             </motion.p>

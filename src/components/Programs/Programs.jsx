@@ -94,6 +94,7 @@ const programs = [
     id: "01",
     IconComponent: IconSocialWelfare,
     title: "Social Welfare",
+    href: "/work/social-welfare",
     description: "Creating opportunities for underprivileged communities to thrive.",
     image: socialWelfareImg,
   },
@@ -101,6 +102,7 @@ const programs = [
     id: "02",
     IconComponent: IconEducation,
     title: "Education and Skill",
+    href: "/work/education-and-skill",
     description: "Empowering youth with learning, training, and employment pathways.",
     image: educationImg,
   },
@@ -108,6 +110,7 @@ const programs = [
     id: "03",
     IconComponent: IconWomen,
     title: "Women Empowerment",
+    href: "/work/women-empowerment",
     description: "Helping women gain confidence, independence, and leadership skills.",
     image: womenImg,
   },
@@ -115,6 +118,7 @@ const programs = [
     id: "04",
     IconComponent: IconChildrenHealth,
     title: "Children and Health Development",
+    href: "/work/children-and-health",
     description: "Promoting health, nutrition, and holistic care for children and families.",
     image: healthImg,
   },
@@ -122,6 +126,7 @@ const programs = [
     id: "05",
     IconComponent: IconCulture,
     title: "Culture and Literature",
+    href: "/work/culture-and-literature",
     description: "Preserving traditions, literature, and art, ensuring India's heritage is celebrated.",
     image: cultureImg,
   },
@@ -129,6 +134,7 @@ const programs = [
     id: "06",
     IconComponent: IconAncestral,
     title: "Ancestral Connection",
+    href: "/#chapter",
     description: "Assisting Girmitiya families to rediscover and connect with their roots in India.",
     image: ancestralImg,
   },
@@ -260,7 +266,7 @@ function ButtonFlourishRight({ isHovered = false }) {
   );
 }
 
-function ProgramCardItem({ id, IconComponent, title, description, image, index }) {
+function ProgramCardItem({ id, IconComponent, title, description, image, href, index }) {
   const shouldReduceMotion = useReducedMotion();
   const [isHovered, setIsHovered] = useState(false);
   const [btnHovered, setBtnHovered] = useState(false);
@@ -384,7 +390,7 @@ function ProgramCardItem({ id, IconComponent, title, description, image, index }
 
           {/* READ MORE Button */}
           <motion.a
-            href="#programs"
+            href={href}
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.96 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
