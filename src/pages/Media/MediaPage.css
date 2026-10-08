@@ -1,0 +1,200 @@
+/* ---- Dome hero ------------------------------------------------------- */
+
+.md-hero {
+  position: relative;
+  height: 100svh;
+  min-height: 620px;
+  overflow: hidden;
+  background: #05070c;
+}
+.md-dome {
+  position: absolute;
+  inset: 0;
+}
+/* Text sits on a soft dark floor; it never blocks dragging the dome. */
+.md-hero-copy {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  padding-bottom: clamp(2rem, 6vh, 4rem);
+  pointer-events: none;
+}
+.md-hero::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 70%;
+  pointer-events: none;
+  background:
+    linear-gradient(to top, #05070c 0%, rgba(5, 7, 12, 0.88) 30%, rgba(5, 7, 12, 0.4) 65%, transparent 100%),
+    radial-gradient(ellipse 70% 90% at 0% 100%, rgba(5, 7, 12, 0.8), transparent 70%);
+}
+.md-hero-copy {
+  z-index: 3;
+}
+.md-hint {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.4rem;
+  color: rgba(250, 247, 242, 0.62);
+  font: 500 0.7rem/1 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.md-hint svg {
+  width: 0.95rem;
+  height: 0.95rem;
+  color: #e5b869;
+}
+.md-hint--dark {
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  line-height: 1.4;
+  color: #6b7280;
+}
+.md-hint--dark svg {
+  flex-shrink: 0;
+}
+/* The deck is drag-to-throw on desktop, tap-to-advance on phones. */
+.md-hint-touch {
+  display: none;
+}
+@media (max-width: 767px) {
+  .md-hint-pointer {
+    display: none;
+  }
+  .md-hint-touch {
+    display: inline;
+  }
+}
+.md-hint--dark svg {
+  color: #b9873a;
+}
+
+/* The dome stays monochrome; an opened photograph blooms into colour. */
+.md-dome .viewer .enlarge img {
+  filter: none;
+  animation: md-bloom 700ms ease-out;
+}
+@keyframes md-bloom {
+  from { filter: grayscale(1); }
+  to { filter: grayscale(0); }
+}
+
+/* Phones: the dome captures touch, so keep it shorter and let the
+   copy below it be the place to scroll from. */
+@media (max-width: 767px) {
+  .md-hero {
+    height: auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .md-dome {
+    position: relative;
+    inset: auto;
+    height: 62svh;
+  }
+  .md-hero::after {
+    display: none;
+  }
+  .md-hero-copy {
+    position: relative;
+    padding-top: 1.75rem;
+    padding-bottom: 3rem;
+    pointer-events: auto;
+  }
+}
+
+/* ---- Newsroom -------------------------------------------------------- */
+
+.md-news {
+  overflow: hidden;
+  padding-top: clamp(5rem, 10vw, 8rem);
+  background: #f2ece1;
+}
+.md-stack {
+  width: min(86vw, 460px);
+  aspect-ratio: 4 / 5;
+}
+.md-clip {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0.75rem;
+  background: #fffdf8;
+  box-shadow: 0 30px 60px rgba(60, 45, 20, 0.22), 0 2px 8px rgba(60, 45, 20, 0.1);
+}
+.md-clip-paper {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  background: #f7f3ea;
+}
+.md-clip-paper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  filter: sepia(0.12) contrast(1.03);
+}
+.md-clip figcaption {
+  display: grid;
+  gap: 0.4rem;
+  padding: 0.9rem 0.25rem 0.2rem;
+}
+.md-clip-en {
+  font-weight: 600;
+  font-size: clamp(0.95rem, 0.9rem + 0.3vw, 1.1rem);
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: #18181b;
+}
+/* Stack's default card radius suits photos, not newsprint. */
+.md-stack .card {
+  border-radius: 6px;
+}
+
+.md-ticker {
+  margin-top: clamp(4rem, 8vw, 6rem);
+  overflow: hidden;
+  border-top: 1px solid rgba(24, 24, 27, 0.1);
+  padding-block: 1.6rem;
+}
+.md-ticker-track {
+  display: flex;
+  width: max-content;
+  animation: md-ticker 70s linear infinite;
+}
+.md-ticker:hover .md-ticker-track {
+  animation-play-state: paused;
+}
+.md-ticker li {
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+  padding-right: 2rem;
+  white-space: nowrap;
+  font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.8rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #18181b;
+}
+.md-ticker-star {
+  font-size: 0.45em;
+  color: #c59b27;
+}
+
+@keyframes md-ticker {
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .md-ticker-track { animation: none; flex-wrap: wrap; width: auto; }
+  .md-ticker li[aria-hidden="true"] { display: none; }
+}

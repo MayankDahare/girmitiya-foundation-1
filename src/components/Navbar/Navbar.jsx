@@ -28,7 +28,9 @@ function MenuToggle({ open, onClick }) {
 }
 
 const isActive = (link, path) =>
-  link.children ? link.children.some((child) => child.href === path) : link.label === "Home" && path === "/";
+  link.children
+    ? link.children.some((child) => child.href === path)
+    : link.href === path || (link.label === "Home" && path === "/");
 
 /* Desktop mega-dropdown: numbered list on the left, a photograph on the
    right that cross-fades to whichever page is hovered or focused. */
@@ -256,7 +258,7 @@ export default function Navbar() {
           {/* Donate Button */}
           <div className="hidden lg:block">
             <a
-              href="/#donate"
+              href="/donate"
               className="inline-flex items-center gap-2 rounded-md bg-[#C59B27] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-[background-color,box-shadow,transform] duration-200 hover:bg-[#b58b20] hover:shadow active:scale-[0.97]"
             >
               Donate Now <Heart className="h-4 w-4" />
@@ -379,7 +381,7 @@ export default function Navbar() {
                 transition={{ duration: 0.5, delay: 0.12 + navLinks.length * 0.045, ease: drawerEase }}
               >
                 <a
-                  href="/#donate"
+                  href="/donate"
                   onClick={close}
                   className="flex w-full items-center justify-center gap-2 rounded-full bg-[#C59B27] py-4 text-[15px] font-semibold text-[#0A101D] transition-[background-color,transform] duration-200 hover:bg-[#d9b167] active:scale-[0.98]"
                 >

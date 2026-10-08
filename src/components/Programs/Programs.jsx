@@ -134,7 +134,7 @@ const programs = [
     id: "06",
     IconComponent: IconAncestral,
     title: "Ancestral Connection",
-    href: "/#chapter",
+    href: "/girmitiya-chapter/reconnect-to-your-roots",
     description: "Assisting Girmitiya families to rediscover and connect with their roots in India.",
     image: ancestralImg,
   },

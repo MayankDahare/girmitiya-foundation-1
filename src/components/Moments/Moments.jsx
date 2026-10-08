@@ -218,7 +218,7 @@ export default function Moments() {
         <p className="mo-outro-line">
           The next chapter is <span className="t-accent">yours.</span>
         </p>
-        <a href="#donate" className="mo-outro-cta">
+        <a href="/donate" className="mo-outro-cta">
           Be part of it <ArrowRight aria-hidden="true" />
         </a>
       </div>

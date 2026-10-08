@@ -38,10 +38,10 @@ export default function CTA() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4"
         >
-          <a href="#donate" className="btn-gold justify-center">
+          <a href="/donate" className="btn-gold justify-center">
             Support Our Work <Heart className="h-4 w-4" />
           </a>
-          <a href="#chapter" className="btn-outline justify-center">
+          <a href="/girmitiya-chapter" className="btn-outline justify-center">
             Reconnect to Your Roots <ArrowRight className="h-4 w-4" />
           </a>
         </motion.div>

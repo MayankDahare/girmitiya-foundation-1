@@ -10,6 +10,7 @@ import {
 import { ArrowUpRight, ChevronUp, MapPin, Phone } from "lucide-react";
 import logo from "../../assets/logos/girmitiya logo.png";
 import { footerQuickLinks, footerPolicyLinks } from "../../data/homepage";
+import { contact } from "../../data/contact";
 import { FacebookIcon, InstagramIcon, YoutubeIcon, LinkedinIcon } from "./SocialIcons";
 import "./Footer.css";
 
@@ -20,7 +21,7 @@ const socialLinks = [
   { icon: LinkedinIcon, label: "LinkedIn", href: "#" },
 ];
 
-/* The indenture voyages, 1834–1920. India sits at the centre of the map;
+/* The indenture voyages, 1834–1917. India sits at the centre of the map;
    each route arcs out to the colony where the first ships landed. */
 const ORIGIN = { x: 600, y: 190 };
 const voyages = [
@@ -176,10 +177,10 @@ export default function Footer() {
         </h2>
         <div className="vf-hero-row">
           <p className="vf-lede">
-            Between 1834 and 1920, over a million Indians crossed the oceans under indenture.
+            Between 1834 and 1917, more than 1.5 million Indians crossed the oceans under indenture.
             We help their descendants trace the villages, birth places and families they left behind.
           </p>
-          <MagneticLink href="/#chapter" reduceMotion={reduceMotion}>
+          <MagneticLink href="/girmitiya-chapter" reduceMotion={reduceMotion}>
             Begin your<br />search <ArrowUpRight aria-hidden="true" />
           </MagneticLink>
         </div>
@@ -256,14 +257,15 @@ export default function Footer() {
 
         <address className="vf-col vf-contact">
           <h3 className="vf-heading">Reach us</h3>
-          <a href="mailto:girmitiya.foundation2023@gmail.com" className="vf-contact-big">
-            girmitiya.foundation2023<wbr />@gmail.com
+          <a href={`mailto:${contact.email}`} className="vf-contact-big">
+            {contact.email.split("@")[0]}<wbr />@{contact.email.split("@")[1]}
           </a>
-          <a href="tel:+919891598276" className="vf-contact-row"><Phone aria-hidden="true" /> +91 98915 98276 <small>India</small></a>
-          <a href="tel:+41797416368" className="vf-contact-row"><Phone aria-hidden="true" /> +41 79 741 63 68 <small>Switzerland</small></a>
+          {contact.phones.map((phone) => (
+            <a key={phone.tel} href={`tel:${phone.tel}`} className="vf-contact-row"><Phone aria-hidden="true" /> {phone.display} <small>{phone.label}</small></a>
+          ))}
           <p className="vf-contact-row">
             <MapPin aria-hidden="true" />
-            <span>32-A, Ground Floor, Mayur Vihar Phase-I, near Uma Enclave, C-Block, D2, New Delhi 110091</span>
+            <span>{contact.address.lines.join(", ")}</span>
           </p>
         </address>
       </div>

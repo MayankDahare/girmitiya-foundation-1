@@ -153,10 +153,10 @@ export default function GlobalFamily() {
           <p className="gf-support">
             Bridging Continents, Reconnecting Generations, Upholding Heritage
           </p>
-          <a href="#chapter" className="gf-cta">
+          <a href="/girmitiya-chapter" className="gf-cta">
             Our Global Presence <ArrowRight aria-hidden="true" className="h-4 w-4" />
           </a>
-          <a href="#chapter" className="gf-journey"><span><Play aria-hidden="true" className="h-3 w-3 fill-current" /></span> Our Journey (2 Min)</a>
+          <a href="/girmitiya-chapter" className="gf-journey"><span><Play aria-hidden="true" className="h-3 w-3 fill-current" /></span> Our Journey (2 Min)</a>
           <p className="gf-quote">“Different Lands. Same Roots. Always a Family.”</p>
         </motion.div>
 

@@ -1,0 +1,209 @@
+/* ---- Bank card ------------------------------------------------------- */
+
+.dn-card-stage {
+  max-width: 30rem;
+  perspective: 1100px;
+}
+.dn-card {
+  position: relative;
+  aspect-ratio: 1.586;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(1.25rem, 3.5vw, 1.9rem);
+  border-radius: 20px;
+  border: 1px solid rgba(229, 184, 105, 0.35);
+  background:
+    radial-gradient(120% 90% at 0% 0%, rgba(197, 155, 39, 0.28), transparent 55%),
+    radial-gradient(90% 80% at 100% 100%, rgba(124, 31, 42, 0.35), transparent 60%),
+    linear-gradient(135deg, #14273e 0%, #0a101d 60%, #05070c 100%);
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+/* Faint guilloche-style rings, like security print on a cheque. */
+.dn-card::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: repeating-radial-gradient(circle at 75% 30%, rgba(229, 184, 105, 0.07) 0 1px, transparent 1px 14px);
+  pointer-events: none;
+}
+.dn-card-shine {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+.dn-card-top,
+.dn-card-bottom {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  transform: translateZ(30px);
+}
+.dn-card-chip {
+  width: 2.6rem;
+  height: 2rem;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #f2e2c2, #c59b27 55%, #8c6b1a);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+}
+.dn-card-bank {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #f2e2c2;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.dn-card-bank svg {
+  width: 1rem;
+  height: 1rem;
+  color: #e5b869;
+}
+.dn-card-number {
+  position: relative;
+  transform: translateZ(40px);
+  font: 500 clamp(1.25rem, 0.9rem + 1.8vw, 1.9rem) / 1 var(--font-mono);
+  letter-spacing: 0.08em;
+  color: #faf7f2;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+.dn-card-label {
+  display: block;
+  font: 500 0.6rem/1 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(250, 247, 242, 0.5);
+}
+.dn-card-value {
+  display: block;
+  margin-top: 0.4rem;
+  font-weight: 600;
+  font-size: clamp(0.85rem, 0.8rem + 0.3vw, 1rem);
+  color: #faf7f2;
+}
+
+/* ---- Detail rows ----------------------------------------------------- */
+
+.dn-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "label copy"
+    "value copy";
+  align-items: center;
+  gap: 0.4rem 1rem;
+  padding-block: 1.1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.dn-row dt { grid-area: label; }
+.dn-row-value {
+  grid-area: value;
+  font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem);
+  font-weight: 500;
+  color: #faf7f2;
+  overflow-wrap: anywhere;
+}
+.dn-copy {
+  grid-area: copy;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 6.2rem;
+  height: 2.5rem;
+  padding: 0 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  color: rgba(250, 247, 242, 0.85);
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease, transform 160ms ease-out;
+}
+.dn-copy svg {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+.dn-copy:hover {
+  border-color: rgba(229, 184, 105, 0.7);
+  color: #faf7f2;
+}
+.dn-copy:active {
+  transform: scale(0.96);
+}
+.dn-copy.is-copied {
+  border-color: #c59b27;
+  background: #c59b27;
+  color: #05070c;
+}
+
+/* ---- Causes ---------------------------------------------------------- */
+
+.dn-cause {
+  position: relative;
+  display: flex;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 18px;
+  color: #faf7f2;
+  isolation: isolate;
+}
+.dn-cause img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.04);
+  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: -2;
+}
+.dn-cause:hover img {
+  transform: scale(1.12);
+}
+.dn-cause-shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.25) 55%, rgba(0, 0, 0, 0.1));
+}
+.dn-cause-body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1.25rem;
+}
+.dn-cause-arrow {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(6px);
+  transition: background-color 300ms ease, transform 500ms cubic-bezier(0.22, 1, 0.36, 1), color 300ms ease;
+}
+.dn-cause-arrow svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+.dn-cause:hover .dn-cause-arrow {
+  background: #c59b27;
+  color: #05070c;
+  transform: rotate(45deg);
+}
+
+@media (max-width: 639px) {
+  .dn-cause {
+    aspect-ratio: 16 / 10;
+  }
+}

@@ -12,15 +12,16 @@ import {
 } from "lucide-react";
 import { aboutPages } from "./about";
 import { workPages } from "./work";
+import { chapterPages } from "./chapter";
 
 export const navLinks = [
   { label: "Home", href: "/#home" },
   { label: "About Us", href: "/#about", children: aboutPages },
   { label: "Our Work", href: "/#programs", children: workPages },
-  { label: "Girmitiya Chapter", href: "/#chapter", hasDropdown: true },
-  { label: "Media", href: "/#media", hasDropdown: true },
-  { label: "Blog", href: "/#blog" },
-  { label: "Contact Us", href: "/#contact" },
+  { label: "Girmitiya Chapter", href: "/girmitiya-chapter", children: chapterPages },
+  { label: "Media", href: "/media" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 export const heroPillars = [
@@ -57,11 +58,11 @@ export const footerQuickLinks = [
   { label: "About Us", href: "/#about" },
   ...aboutPages.map(({ label, href }) => ({ label, href })),
   { label: "Our Work", href: "/#programs" },
-  { label: "Girmitiya Chapter", href: "/#chapter" },
-  { label: "Media", href: "/#media" },
-  { label: "Blog", href: "/#blog" },
-  { label: "Contact Us", href: "/#contact" },
-  { label: "Donate Now", href: "/#donate" },
+  { label: "Girmitiya Chapter", href: "/girmitiya-chapter" },
+  { label: "Media", href: "/media" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact Us", href: "/contact" },
+  { label: "Donate Now", href: "/donate" },
 ];
 
 export const footerPolicyLinks = [

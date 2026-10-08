@@ -22,6 +22,7 @@ import {
 } from "../../components/About/AboutKit";
 import { aboutPages, mission, team, values, vision } from "../../data/about";
 import { impactStats } from "../../data/homepage";
+import { contact } from "../../data/contact";
 
 /* ---- Our Vision ------------------------------------------------------ */
 
@@ -185,10 +186,10 @@ function TeamPage() {
             <MaskLines lines={["Carry the legacy"]} accent="forward" light className="t-h1 mt-5" />
           </div>
           <FadeUp className="flex flex-col gap-3 sm:flex-row lg:col-span-5 lg:justify-end">
-            <a href="mailto:girmitiya.foundation2023@gmail.com" className="btn-gold justify-center">
+            <a href={`mailto:${contact.email}`} className="btn-gold justify-center">
               Volunteer with us <Mail className="h-4 w-4" />
             </a>
-            <a href="/#contact" className="btn-outline justify-center">Contact us</a>
+            <a href="/contact" className="btn-outline justify-center">Contact us</a>
           </FadeUp>
         </div>
       </section>

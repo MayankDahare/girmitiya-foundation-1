@@ -16,6 +16,7 @@ import {
   ScrollStatement,
 } from "../../components/About/AboutKit";
 import { work, workPages } from "../../data/work";
+import { contact } from "../../data/contact";
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -67,10 +68,10 @@ function Support({ label }) {
           <MaskLines lines={[`Support ${label.toLowerCase()}`]} accent="with us" light className="t-h1 mt-5" />
         </div>
         <FadeUp className="flex flex-col gap-3 sm:flex-row lg:col-span-5 lg:justify-end">
-          <a href="/#donate" className="btn-gold justify-center">
+          <a href="/donate" className="btn-gold justify-center">
             Donate now <Heart className="h-4 w-4" />
           </a>
-          <a href="mailto:girmitiya.foundation2023@gmail.com" className="btn-outline justify-center">
+          <a href={`mailto:${contact.email}`} className="btn-outline justify-center">
             Volunteer <Mail className="h-4 w-4" />
           </a>
         </FadeUp>

@@ -3,8 +3,15 @@ import { motion, useReducedMotion } from "framer-motion";
 import Home from "./pages/Home/Home";
 import AboutPage from "./pages/About/AboutPage";
 import WorkPage from "./pages/Work/WorkPage";
+import ChapterPage from "./pages/Chapter/ChapterPage";
+import DonatePage from "./pages/Donate/DonatePage";
+import MediaPage from "./pages/Media/MediaPage";
+import ContactPage from "./pages/Contact/ContactPage";
+import { BlogIndex, BlogPost } from "./pages/Blog/BlogPage";
+import { posts } from "./data/blog";
 import { aboutPages } from "./data/about";
 import { workPages } from "./data/work";
+import { chapterPages } from "./data/chapter";
 import { handleLinkClick, usePath } from "./lib/router";
 
 const curtainEase = [0.76, 0, 0.24, 1];
@@ -17,6 +24,14 @@ function pageFor(path) {
   const program = workPages.find((page) => page.href === path);
   if (program) return <WorkPage slug={program.slug} />;
   if (path === "/work") return <WorkPage slug={workPages[0].slug} />;
+  const chapterPage = chapterPages.find((page) => page.href === path);
+  if (chapterPage) return <ChapterPage slug={chapterPage.slug} />;
+  if (path === "/donate") return <DonatePage />;
+  if (path === "/media") return <MediaPage />;
+  if (path === "/contact") return <ContactPage />;
+  if (path === "/blog") return <BlogIndex />;
+  const post = posts.find((p) => p.href === path);
+  if (post) return <BlogPost slug={post.slug} />;
   return <Home />;
 }
 
@@ -46,8 +61,8 @@ export default function App() {
   }, [path, shownPath, reduceMotion]);
 
   useLayoutEffect(() => {
-    // About and Work pages set their own title; everything else falls back to the home one.
-    if (!/^\/(about|work)\//.test(shownPath)) document.title = homeTitle;
+    // Inner pages set their own title; everything else falls back to the home one.
+    if (!/^\/(about|work|girmitiya-chapter|donate|media|contact|blog)(\/|$)/.test(shownPath)) document.title = homeTitle;
     scrollToTarget();
   }, [shownPath]);
 
